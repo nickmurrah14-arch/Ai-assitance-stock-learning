@@ -153,6 +153,13 @@ def main():
         write_rows(config.AUDITED_CSV, rows)  # save as we go
     with_email = sum(1 for r in rows if r.get("email"))
     print(f"Audited {len(rows)} leads, {with_email} with an email -> {config.AUDITED_CSV}")
+    calls = [
+        {k: r.get(k, "") for k in ("name", "phone", "address", "website", "rating", "reviews", "issues")}
+        for r in sorted(rows, key=lambda r: int(r.get("issue_count") or 0), reverse=True)
+        if not r.get("email") and r.get("phone")
+    ]
+    write_rows(config.CALL_LIST_CSV, calls)
+    print(f"{len(calls)} leads with no email but a phone number -> {config.CALL_LIST_CSV} (call these yourself)")
 
 
 if __name__ == "__main__":

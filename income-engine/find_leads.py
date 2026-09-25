@@ -3,9 +3,11 @@
 Free tier (2026): 5,000 Text Search Pro calls/month, 20 results per call.
 
     python find_leads.py "plumbers in Austin, TX" "roofers in Austin, TX" --pages 3
+    python find_leads.py --file targets/deltona-hvac-plumbing.txt
 """
 import argparse
 import time
+from pathlib import Path
 
 import requests
 
@@ -66,9 +68,15 @@ def search(query: str, pages: int) -> list[dict]:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("queries", nargs="+", help='e.g. "HVAC companies in Denver, CO"')
+    ap.add_argument("queries", nargs="*", help='e.g. "HVAC companies in Denver, CO"')
+    ap.add_argument("--file", help="text file with one query per line (# for comments)")
     ap.add_argument("--pages", type=int, default=3, help="up to 3 pages of 20 per query")
     args = ap.parse_args()
+    if args.file:
+        lines = Path(args.file).read_text().splitlines()
+        args.queries += [l.strip() for l in lines if l.strip() and not l.lstrip().startswith("#")]
+    if not args.queries:
+        ap.error("give queries or --file")
     if not config.GOOGLE_PLACES_API_KEY:
         raise SystemExit("Set GOOGLE_PLACES_API_KEY in income-engine/.env")
 

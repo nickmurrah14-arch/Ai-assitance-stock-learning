@@ -20,7 +20,7 @@ Rules:
 - Open with one specific, true observation taken from the audit findings. Never invent facts beyond the data given.
 - Connect that observation to money the owner is losing (missed calls, slow replies, lost quotes) in one sentence.
 - One sentence on the offer. One low-friction ask (reply "yes" / a 10 minute call). No pressure, no fake urgency, no hype words.
-- Sound like a real person from the same town writing one email, not a marketer.
+- Sound like a real person writing one email, not a marketer. If the sender's city is given and near the business, mention being local once, naturally (e.g. \"I'm in Deltona\").
 - Subject line: 2 to 6 words, lowercase is fine, no clickbait, no "Re:" or "Fwd:" tricks.
 - Do not add a signature or unsubscribe line; those are appended automatically."""
 
@@ -53,7 +53,8 @@ def draft(client: anthropic.Anthropic, lead: dict) -> dict:
     prompt = (
         f"Our offer: {config.OFFER}\n"
         f"Booking link (optional to include): {config.BOOKING_LINK or 'none'}\n"
-        f"Sender first name: {config.SENDER_NAME.split(' ')[0] if config.SENDER_NAME else 'unknown'}\n\n"
+        f"Sender first name: {config.SENDER_NAME.split(' ')[0] if config.SENDER_NAME else 'unknown'}\n"
+        f"Sender is based in: {config.SENDER_CITY or 'not stated - do not claim to be local'}\n\n"
         f"Lead data:\n{json.dumps(facts, indent=2)}"
     )
     extra = {}

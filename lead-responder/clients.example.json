@@ -1,12 +1,12 @@
 {
   "+15551234567": {
-    "name": "Example Heating & Plumbing",
+    "name": "Example Air & Plumbing",
     "trade": "HVAC and plumbing",
     "owner_cell": "+15557654321",
-    "service_area": "Springfield and surrounding towns within 25 miles",
+    "service_area": "Deltona, DeLand, Orange City, DeBary, Sanford and Lake Mary",
     "hours": "Mon-Fri 7am-6pm, Sat 8am-2pm. 24/7 emergency service.",
-    "services": "AC repair and install, furnace repair and install, heat pumps, water heaters, drain cleaning, leak repair, repiping",
-    "emergency_service": "Yes, 24/7 for no heat, no AC, burst pipes and major leaks. After-hours emergency fee applies; the tech will quote it on the phone.",
+    "services": "AC repair and replacement, heat pumps, duct cleaning, water heaters, drain cleaning, leak repair, repiping",
+    "emergency_service": "Yes, 24/7 for no AC in extreme heat, burst pipes and major leaks. After-hours fee applies; the tech will quote it on the phone.",
     "callback_time": "within 15 minutes during business hours, first thing next morning after hours unless it's an emergency",
     "booking_link": "",
     "notes": "Free estimates on new system installs. Financing available.",

@@ -102,32 +102,41 @@ Setup commands are in [README.md](README.md).
 
 ## 6. First 30 days
 
-**Chosen setup:** HVAC and plumbing, in your own area, built on our own system (`lead-responder/`), with a starting budget of about **$150**:
+**Chosen setup:** HVAC and plumbing around **Deltona, FL** (Deltona, DeLand, Orange City, DeBary, Sanford, Lake Mary, the Daytona Beach area, and Seminole County). We build our own system (`lead-responder/`) and start on a **lean budget**:
 
-| Item | First month |
+| Item | Cost to start |
 |---|---|
-| 2 sending domains (~$10–15/yr each) | ~$25 |
-| 2 Google Workspace inboxes (~$7–9 each/mo) | ~$16 |
-| Twilio: top-up covers the demo number, sole-proprietor A2P brand ($4) and campaign vetting ($15) | $20 |
-| Anthropic API credits (drafting emails + demo conversations) | $10–20 |
-| App hosting | ~$5 |
-| Google Places, PageSpeed, Calendly | free tiers |
-| **Total** | **~$95–105**, leaving ~$45 buffer |
+| 1 sending domain (e.g. `trydeltonaleads.com`, ~$10–12/yr at Cloudflare or Porkbun) | ~$11 |
+| 1 Zoho Mail Lite inbox with SMTP (needed for sending) | ~$1.25/mo |
+| Anthropic API credits (emails ~0.6–1.5¢ each; simulator demo) | $5 |
+| Google Places API (48 Deltona-area searches ≈ 150 calls; free up to 5,000/mo; card required, set a budget alert) | $0 |
+| Twilio: use the **free trial** ($15 credit, texts only your own verified phone) to test live | $0 |
+| Hosting: not needed until the first client signs | $0 |
+| Calendly free plan | $0 |
+| **Total** | **~$17–20** |
 
-Each client's own A2P registration (~$20–35) is paid out of their setup fee.
+Paid for later out of the **first client's $497 setup fee**: upgrading Twilio (~$20 top-up), their business-texting registration (~$20–35), and app hosting (~$5/mo).
+
+**Upgrade when it's working:** add a second domain and inbox (~$12 + $1.25/mo) to go from 30 to 60 emails a day.
+
+**Warm-up without paying for a tool:** for the first 2 weeks, send real emails from the new inbox to friends and family and get them to reply, and set `DAILY_SEND_LIMIT` to 5, raising it by about 5 every 2–3 days up to 30. One inbox at 30/day is about 600 emails a month, more than the 200–400 benchmark needs.
+
+**Being local is an edge.** The emails say you're in Deltona. For businesses that don't have an email address, call them yourself or stop by. A person you've met is far easier to trust than a stranger's email. (Calling yourself is fine; automated or AI calls and texts to prospects are not. See section 5.)
+
+**Florida note:** Florida's telemarketing law (FTSA) was narrowed in 2023 to match federal rules. Texts sent *in response to a customer's own call*, like the missed-call text-back, are the exempt kind. Cold outreach should still be email or a call you make yourself ([McGuireWoods](https://www.mcguirewoods.com/client-resources/alerts/2023/5/pro-business-amendments-to-floridas-mini-tcpa-now-in-effect/), [Burr & Forman](https://www.burr.com/telephone-consumer-protection-act/florida-enacts-significant-amendment-to-telephone-solicitation-act-amendment)).
 
 **Week 1: set up (about 5–8 hours total)**
 
-- [ ] Pick **one niche + one metro area** (e.g. HVAC in Phoenix). Tight targeting beats volume.
-- [ ] Buy 2 sending domains + Google Workspace inboxes, set up SPF/DKIM/DMARC, and start warmup.
+- [x] Niche + area: **HVAC/plumbing around Deltona, FL**. Queries are ready in `targets/deltona-hvac-plumbing.txt`.
+- [ ] Buy 1 sending domain + a Zoho Mail Lite inbox, set up SPF/DKIM/DMARC (Zoho walks you through it), and start warm-up.
 - [ ] Get API keys: Google Places, Anthropic. Fill in `.env`.
-- [ ] Build a **demo** of the missed-call text-back on your own number (GoHighLevel trial or Twilio). Record a 60-second screen video. It's your best sales asset.
+- [ ] Record the **demo**: run `python lead-responder/simulate.py` and screen-record a 60-second conversation ("my AC quit", then "I smell gas"). It's your best sales asset. Optionally test it live on your own phone with a Twilio free trial.
 - [ ] Post an Upwork profile + Fiverr gig: "AI missed-call text-back & lead follow-up setup" and "n8n / Zapier AI automation."
 - [ ] Get a booking link (Calendly free tier).
 
 **Week 2: fill the pipeline while domains warm up**
 
-- [ ] `find_leads.py` for 5–10 queries in your niche → 300–600 leads.
+- [ ] `python find_leads.py --file targets/deltona-hvac-plumbing.txt` → expect a few hundred unique businesses after duplicates are removed.
 - [ ] `audit_sites.py` → `write_emails.py`, then review the drafts. Tighten the `OFFER` and the system prompt until the drafts read like you.
 - [ ] Apply to 5 Upwork jobs a day with a short, specific proposal.
 

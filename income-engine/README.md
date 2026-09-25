@@ -15,8 +15,8 @@ cp .env.example .env   # fill in API keys, your name, postal address, offer, SMT
 ## Daily run
 
 ```bash
-python find_leads.py "HVAC companies in Phoenix, AZ" "AC repair in Mesa, AZ"   # -> data/leads.csv
-python audit_sites.py                      # -> data/audited.csv (add --pagespeed for speed scores)
+python find_leads.py --file targets/deltona-hvac-plumbing.txt   # -> data/leads.csv (or pass queries directly)
+python audit_sites.py                      # -> data/audited.csv + data/call_list.csv (no email found: phone them yourself)
 python write_emails.py --limit 40          # -> data/drafts.csv, status=draft
 #   open data/drafts.csv, edit anything off, set status=approved on the good ones
 python send_emails.py                      # dry run
