@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block title %}{{ row.name }}{% endblock %}
+{% block head %}
+<style>
+.callgrid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; align-items: start; }
+@media (max-width: 900px) { .callgrid { grid-template-columns: 1fr; } }
+.phone-big { font-size: 28px; font-weight: 800; text-decoration: none; }
+.step { border-left: 4px solid var(--brand); padding: 6px 12px; margin: 10px 0; background: var(--bg); border-radius: 0 8px 8px 0; }
+.step b { display: block; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.outcomes { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 12px; }
+.outcomes label { border: 1.5px solid var(--line); border-radius: 999px; padding: 6px 12px; cursor: pointer; font-weight: 600; font-size: 14px; }
+.outcomes input { display: none; }
+.outcomes input:checked + span { color: var(--brand); }
+.outcomes label:has(input:checked) { border-color: var(--brand); background: var(--chip); }
+.search { margin-bottom: 10px; }
+#ai-out { white-space: pre-wrap; margin-top: 8px; }
+</style>
+{% endblock %}
+{% block body %}
+<p class="small"><a href="/calls">← Back to call list</a></p>
+<div class="card" style="margin-bottom:16px">
+  <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
+    <div>
+      <h1 style="margin:0">{{ row.name }}</h1>
+      <div class="muted">{{ row.city }}{% if row.website %} · <a href="{{ row.website }}" target="_blank" rel="noopener">website</a>{% else %} · no website found{% endif %}
+        {% if row.attempts %} · called {{ row.attempts }}× (last {{ row.last_called[:10] }}){% endif %}</div>
+    </div>
+    <a class="phone-big" href="tel:{{ row.phone }}">📞 {{ row.phone }}</a>
+  </div>
+  {% if noticed %}<h2 style="margin-top:14px">What we noticed (use one as your hook)</h2>
+  <ul>{% for n in noticed %}<li>{{ n }}</li>{% endfor %}</ul>{% endif %}
+  {% if row.notes_from_calls %}<h2>Your notes</h2><p>{{ row.notes_from_calls }}</p>{% endif %}
+</div>
+
+<div class="callgrid">
+  <div>
+    <div class="card">
+      <h2 style="margin-top:0">Your script</h2>
+      <div class="step"><b>Opener for this business</b><div class="say">{{ ("Hi, is this the owner? ... Great. I'm [your name], I'm local here in Deltona. " ~ row.opener)|personalize }}</div></div>
+      {% for s in pb.script[1:] %}
+      <div class="step"><b>{{ s.step }}</b><div class="say">{{ s.say|personalize }}</div>{% if s.tip %}<div class="tip">💡 {{ s.tip }}</div>{% endif %}</div>
+      {% endfor %}
+      <details><summary>Other openers (receptionist, voicemail…)</summary>
+        {% for o in pb.openers %}<div class="step"><b>{{ o.situation }}</b><div class="say">{{ o.say|personalize }}</div>{% if o.tip %}<div class="tip">💡 {{ o.tip }}</div>{% endif %}</div>{% endfor %}
+      </details>
+      <details><summary>Questions to ask them</summary>
+        <ol>{% for q in pb.discovery_questions %}<li><strong>{{ q.q }}</strong> <span class="muted small">{{ q.why }}</span></li>{% endfor %}</ol>
+      </details>
+    </div>
+
+    <form class="card" style="margin-top:16px" method="post" action="/call/{{ key }}/log">
+      <h2 style="margin-top:0">Log this call</h2>
+      <div class="outcomes">
+        {% for o in outcomes %}<label><input type="radio" name="result" value="{{ o }}" required {{ 'checked' if row.result == o }}><span>{{ o }}</span></label>{% endfor %}
+      </div>
+      <label class="small muted">Notes (who you spoke to, what they said, best time)</label>
+      <textarea name="notes" rows="3" placeholder="e.g. Spoke to Kevin, misses calls on weekends, call back Tues after 4"></textarea>
+      <div style="display:flex;gap:12px;align-items:end;margin-top:10px;flex-wrap:wrap">
+        <div><label class="small muted">Follow-up date</label><input type="date" name="follow_up_date" value="{{ row.follow_up_date or default_followup }}"></div>
+        <button class="btn" name="next" value="{{ next_key or '' }}">Save{% if next_key %} & next call →{% endif %}</button>
+        <button class="btn ghost" name="next" value="">Save & back to list</button>
+      </div>
+      {% if history %}<h2>History</h2><ul class="small">{% for h in history %}<li>{{ h.time.replace('T', ' ') }}: <strong>{{ h.result }}</strong>{% if h.notes %}. {{ h.notes }}{% endif %}</li>{% endfor %}</ul>{% endif %}
+    </form>
+  </div>
+
+  <div>
+    <div class="card">
+      <h2 style="margin-top:0">Quick answers</h2>
+      <input class="search" type="text" id="q" placeholder="Type a word: price, contract, robot, setup…">
+      <div id="answers">
+        <h3 class="small muted">OBJECTIONS</h3>
+        {% for o in pb.objections %}<details class="ans"><summary>“{{ o.they }}”</summary><div class="say">{{ o.you|personalize }}</div>{% if o.tip %}<div class="tip">💡 {{ o.tip }}</div>{% endif %}</details>{% endfor %}
+        {% for g in pb.faq %}<h3 class="small muted">{{ g.group|upper }}</h3>
+          {% for i in g["items"] %}<details class="ans"><summary>{{ i.q }}</summary><div class="say">{{ i.a|personalize }}</div></details>{% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h2 style="margin-top:0">🤖 Live helper</h2>
+      {% if ai_enabled %}
+        <p class="small muted">Type what they just said and get a suggested reply (uses Claude, ~1–2¢ each).</p>
+        <textarea id="said" rows="2" placeholder="e.g. we tried an answering service and hated it"></textarea>
+        <button class="btn small" style="margin-top:8px" onclick="ask()">Suggest a reply</button>
+        <div id="ai-out" class="say"></div>
+      {% else %}
+        <p class="small">Free option: keep this chat with Claude open during calls and type what they said. I'll suggest a reply.</p>
+        <p class="small muted">Built-in option: add an Anthropic API key to <code>income-engine\.env</code> and a "suggest a reply" box appears here (about 1–2¢ per suggestion).</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+const q = document.getElementById("q");
+q.addEventListener("input", () => {
+  const t = q.value.toLowerCase().trim();
+  document.querySelectorAll("#answers .ans").forEach(d => {
+    const hit = !t || d.textContent.toLowerCase().includes(t);
+    d.style.display = hit ? "" : "none";
+    d.open = !!t && hit;
+  });
+});
+async function ask() {
+  const out = document.getElementById("ai-out");
+  out.textContent = "Thinking…";
+  try {
+    const r = await fetch("/api/suggest", {method: "POST", headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({business: {{ row.name|tojson }}, noticed: {{ row.what_we_noticed|tojson }}, said: document.getElementById("said").value})});
+    const j = await r.json();
+    out.textContent = j.text || j.error;
+  } catch (e) { out.textContent = "Couldn't reach the helper. Use the quick answers."; }
+}
+</script>
+{% endblock %}

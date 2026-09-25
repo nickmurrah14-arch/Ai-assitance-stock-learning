@@ -36,9 +36,10 @@ Everything you need to talk to owners, by phone, in person, or on freelance site
 | "Too expensive." | "What's one AC repair worth to you? If this saves one job a month, it's paid for. And if it doesn't recover a lead in 30 days, the setup's refunded." |
 | "I don't want a robot talking to my customers." | "Fair. It doesn't pretend to be a person, and it doesn't quote prices or promise times. It just says 'sorry we missed you,' gets the details, and hands them to you. You still make the call." |
 | "We already have an answering service." | "How much do you pay for it? This is usually cheaper, it replies in seconds by text, which a lot of people prefer, and you get the details in writing." |
+| "Who else uses this?" / "Do you have references?" | "Honestly, you'd be one of my first clients. That's why I do a free demo and refund the setup if it doesn't recover a lead in 30 days." |
 | "Let me think about it." | "Of course. What's the part you're unsure about?" *(Then answer that.)* "Can I follow up Thursday?" |
 | "Send me an email." | "Happy to. What's the best address? I'll include a short video of it working." |
-| "What if it says something wrong?" | "It only uses facts you approve: services, hours, area, and your emergency policy. We test it together before it goes live, and you can read every conversation." |
+| "What if it says something wrong?" | "It only uses facts you approve: services, hours, area, and your emergency policy. We test it together before it goes live. You get a text summary of every lead, and I can send you the full conversation for any of them." |
 
 ## 5. Follow-up texts and emails (only to people who said yes to being contacted)
 
@@ -46,7 +47,7 @@ Everything you need to talk to owners, by phone, in person, or on freelance site
 > "Thanks for the time today, [name]. Here's the example I mentioned: [website link]. Happy to get you set up whenever you're ready. [your name]"
 
 **3 days later:**
-> "Hi [name], [your name] here, following up on the missed-call texting. Any questions I can answer? Setup takes about a day."
+> "Hi [name], [your name] here, following up on the missed-call texting. Any questions I can answer? Setup takes about an hour on my end, and it goes live once the carrier approves your texting registration, usually within 1–2 weeks."
 
 ## 6. Onboarding questions (after they say yes)
 

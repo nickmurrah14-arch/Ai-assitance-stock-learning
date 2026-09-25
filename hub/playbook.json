@@ -1,0 +1,273 @@
+{
+  "business_name": "Missed Call Rescue",
+  "before_you_dial": [
+    "Open the business's page in the call assistant: read what we noticed and the notes.",
+    "Know your one number: most callers who hit voicemail don't leave one; they call the next company.",
+    "Have your calendar open so you can book the demo on the call.",
+    "Best times: 7-8am, 11:30am-1pm, 4:30-6pm. Avoid Monday mornings and hot summer afternoons.",
+    "Smile when you talk. It sounds friendlier over the phone."
+  ],
+  "script": [
+    {
+      "step": "Opener",
+      "say": "Hi, is this the owner? ... Great. I'm [your name], I'm local here in Deltona. I'll be quick: do you ever miss calls while you're out on jobs?"
+    },
+    {
+      "step": "Let them talk",
+      "say": "What usually happens to those? Do they go to voicemail?",
+      "tip": "Stay quiet and let them explain. They're describing the problem you solve."
+    },
+    {
+      "step": "Bridge",
+      "say": "Most people who hit voicemail don't leave a message. They call the next company. What I do is make sure every missed call gets a text back within seconds. It gets their name, address and what's wrong, and texts you the lead, even at 11pm."
+    },
+    {
+      "step": "Ask for the demo",
+      "say": "Can I show you in 10 minutes? I can stop by, or we can do a quick video call. Is [day] or [day] easier?"
+    },
+    {
+      "step": "If busy",
+      "say": "Totally get it. Can I text you a 30-second example so you can look when you have a minute?",
+      "tip": "Only text them if they say yes. That's their consent."
+    }
+  ],
+  "openers": [
+    {
+      "situation": "Owner answers",
+      "say": "Hi, is this [owner name]? I'm [your name], local here in Deltona. Quick question: do you ever miss calls while you're out on jobs?"
+    },
+    {
+      "situation": "Receptionist / office answers",
+      "say": "Hi, I'm [your name], I'm local and I help HVAC and plumbing companies catch the calls that come in when the office is closed or the lines are busy. Who handles decisions on the phones? ... When's the best time to reach them?"
+    },
+    {
+      "situation": "Voicemail",
+      "say": "Hi, this is [your name], I'm local in Deltona. I help HVAC and plumbing companies turn missed calls into booked jobs with an instant text-back. I'd love to show you a quick 10-minute demo. My number is [your number]. Again, [your name], [your number]. Thanks!",
+      "tip": "Keep it under 30 seconds. Say your number twice."
+    },
+    {
+      "situation": "They say 'who is this?' / 'what are you selling?'",
+      "say": "Fair question! I'm [your name], I live here in Deltona. I set up a system that texts back anyone whose call you miss, so they don't call your competitor. I'm not asking you to buy anything today, just to see a 10-minute demo."
+    }
+  ],
+  "discovery_questions": [
+    {
+      "q": "Roughly how many calls do you get in a week?",
+      "why": "Sizes the opportunity."
+    },
+    {
+      "q": "When you're on a job, who answers the phone?",
+      "why": "Finds the gap. It's usually nobody."
+    },
+    {
+      "q": "What happens to calls after 5pm and on weekends?",
+      "why": "After-hours calls are the easiest win."
+    },
+    {
+      "q": "Do people leave voicemails, or do most just hang up?",
+      "why": "Lets them say the problem out loud."
+    },
+    {
+      "q": "What's a typical repair ticket worth? And a new system?",
+      "why": "Lets you do the ROI math with their own numbers."
+    },
+    {
+      "q": "How do you get most of your customers now: Google, referrals, ads?",
+      "why": "If they pay for ads, every missed call wastes ad money."
+    },
+    {
+      "q": "Have you tried an answering service before? How did it go?",
+      "why": "Surfaces objections early."
+    },
+    {
+      "q": "If this caught just two extra jobs a month, would that be worth $197?",
+      "why": "A soft trial close."
+    }
+  ],
+  "faq": [
+    {
+      "group": "How it works",
+      "items": [
+        {
+          "q": "How does it work?",
+          "a": "When a call isn't answered, your phone forwards it to your assistant line. The caller gets a text within seconds, the assistant gets their name, address, the problem and when they're free, and you get the lead by text."
+        },
+        {
+          "q": "Do I have to change my phone number?",
+          "a": "No. We turn on 'forward when unanswered' on your current line. Calls you pick up work exactly like today."
+        },
+        {
+          "q": "Does it answer the phone or talk to people?",
+          "a": "No, it texts. It's a text conversation after a missed call, not a robot voice."
+        },
+        {
+          "q": "Can it book appointments on my calendar?",
+          "a": "It collects when the customer is available, and can send your booking link if you have one. You or your office confirm the time on the call-back."
+        },
+        {
+          "q": "What if I answer the call?",
+          "a": "Nothing changes. It only kicks in when a call goes unanswered."
+        },
+        {
+          "q": "Can it reply in Spanish?",
+          "a": "It can be set up to reply in Spanish when a customer writes in Spanish. We'd test that together before going live."
+        }
+      ]
+    },
+    {
+      "group": "Cost",
+      "items": [
+        {
+          "q": "How much is it?",
+          "a": "$497 one-time setup, then $197 a month. Texting and the assistant are included. No contract, cancel anytime."
+        },
+        {
+          "q": "Is there a guarantee?",
+          "a": "Yes. If it doesn't recover at least one lead in your first 30 days, I refund the setup fee."
+        },
+        {
+          "q": "Why is it worth it?",
+          "a": "One saved AC repair or water-heater job usually covers the month. A new system install covers the year."
+        }
+      ]
+    },
+    {
+      "group": "Setup",
+      "items": [
+        {
+          "q": "How long does setup take?",
+          "a": "About an hour of my time and about 20 minutes of yours. Texting goes live once the carriers approve your business-texting registration, usually within a few days to two weeks."
+        },
+        {
+          "q": "What do I need to do?",
+          "a": "Answer a few questions about your services, hours and area, and turn on one call-forwarding setting on your phone. I handle the rest."
+        },
+        {
+          "q": "Will it work with my phone company?",
+          "a": "Almost every carrier and business phone system supports 'forward when unanswered'. I'll check yours before we start."
+        }
+      ]
+    },
+    {
+      "group": "Customers & safety",
+      "items": [
+        {
+          "q": "Will it say something wrong to my customers?",
+          "a": "It only uses the facts you approve. It never quotes prices or promises arrival times; it tells customers your team will confirm those."
+        },
+        {
+          "q": "What about emergencies?",
+          "a": "Gas smell, carbon monoxide, sparking or smoke: it tells them to get out and call 911 or the gas company, and texts you an URGENT alert. Flooding and no AC for someone at risk get flagged urgent too."
+        },
+        {
+          "q": "Does it pretend to be a person?",
+          "a": "No. It says it's your automated assistant."
+        },
+        {
+          "q": "What if a customer doesn't want texts?",
+          "a": "They reply STOP and it stops immediately."
+        },
+        {
+          "q": "Is this legal?",
+          "a": "Yes. It only texts people who just called you, includes an opt-out, and your business gets registered with the carriers for texting."
+        },
+        {
+          "q": "Can I see the conversations?",
+          "a": "You get a text summary of every lead, and I can send you the full conversation for any of them."
+        }
+      ]
+    },
+    {
+      "group": "About you",
+      "items": [
+        {
+          "q": "Who are you?",
+          "a": "I'm [your name], I live here in Deltona. I build these systems myself, so if something needs changing I can do it quickly."
+        },
+        {
+          "q": "Who else uses this?",
+          "a": "Honestly, you'd be one of my first clients. That's why I do a free demo and a money-back guarantee on setup."
+        },
+        {
+          "q": "What if you disappear?",
+          "a": "You can cancel anytime with no contract, and your phone number never changes, so turning it off is just switching off call forwarding."
+        }
+      ]
+    }
+  ],
+  "objections": [
+    {
+      "they": "We answer all our calls.",
+      "you": "That's great, most don't. What about after 6pm, weekends, or when a second call comes in while you're on the first? This only kicks in when a call isn't picked up, so it costs you nothing when you do answer."
+    },
+    {
+      "they": "It's too expensive.",
+      "you": "What's one AC repair worth to you? If this saves one job a month, it's paid for. And if it doesn't recover a lead in 30 days, the setup is refunded."
+    },
+    {
+      "they": "I don't want a robot talking to my customers.",
+      "you": "Fair. It doesn't pretend to be a person and doesn't quote prices. It just says 'sorry we missed you,' gets the details, and hands them to you. You still make the call."
+    },
+    {
+      "they": "We already have an answering service.",
+      "you": "How much do you pay for it? This is usually cheaper, replies in seconds by text, which a lot of people prefer, and you get the details in writing."
+    },
+    {
+      "they": "I'm too busy right now.",
+      "you": "That's exactly when calls get missed! Can I grab 10 minutes on [day] or [day]? Or I can text you a short example if you say that's OK."
+    },
+    {
+      "they": "Let me think about it.",
+      "you": "Of course. What's the part you're unsure about? ... Can I follow up [day]?"
+    },
+    {
+      "they": "Send me an email.",
+      "you": "Happy to. What's the best address? I'll include a short video of it working."
+    },
+    {
+      "they": "We're not interested.",
+      "you": "No problem at all, thanks for your time. If missed calls ever become a headache, I'm right here in Deltona.",
+      "tip": "Log it as 'Not interested' and don't call again."
+    },
+    {
+      "they": "How did you get my number?",
+      "you": "It's the number your business lists publicly online. I'm reaching out because I'm local and think this could help."
+    }
+  ],
+  "closing": [
+    "Book it on the call: 'I have [day] at [time] or [day] at [time]. Which works better?'",
+    "Confirm: 'Great, I'll see you [day] at [time] at [place]. Best number to reach you?'",
+    "At the demo: show the example, show their own audit finding, do the ROI math with their numbers, then ask: 'Want me to get you set up this week?'"
+  ],
+  "after_call": [
+    "Log the result and notes in the call assistant right away.",
+    "Set a follow-up date for 'Call back' and 'Interested'.",
+    "Only text or email them if they said you could.",
+    "If they said not interested or don't call, mark it and never contact them again."
+  ],
+  "numbers": [
+    {
+      "stat": "62%",
+      "text": "of calls to small businesses go unanswered (industry call-tracking data)"
+    },
+    {
+      "stat": "85%",
+      "text": "of people whose call isn't answered don't call back"
+    },
+    {
+      "stat": "9x",
+      "text": "more likely to become a job when the lead hears back within 5 minutes vs 30"
+    },
+    {
+      "stat": "30-40%",
+      "text": "of home-services calls come in after hours"
+    }
+  ],
+  "donts": [
+    "Don't promise prices or arrival times for their customers.",
+    "Don't cold-text or use an automated or AI voice to call prospects. It's illegal without consent, with fines of $500-1,500 per message.",
+    "Don't record calls without telling them. Florida requires everyone on the call to agree.",
+    "Don't claim other clients or results you don't have yet.",
+    "Don't argue. If it's a no, thank them and move on."
+  ]
+}

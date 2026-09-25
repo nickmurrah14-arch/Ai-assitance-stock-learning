@@ -36,3 +36,7 @@ See [`lead-responder/`](lead-responder/) for the product: missed-call text-back 
 
 - [`docs/index.html`](docs/index.html): the sales website (publish free with GitHub Pages → Settings → Pages → Deploy from branch → `/docs`).
 - [`sales/SALES-KIT.md`](sales/SALES-KIT.md): pitch, call script, objections, onboarding questions, and Fiverr/Upwork copy.
+
+## 🏠 Business HQ
+
+Start with [`START-HERE.md`](START-HERE.md). [`hub/`](hub/) is a local dashboard (calls, call assistant, email drafts, cheat sheet, guides): `python hub/app.py --open`.

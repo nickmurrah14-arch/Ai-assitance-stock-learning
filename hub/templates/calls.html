@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Calls{% endblock %}
+{% block body %}
+<h1>📞 Calls</h1>
+<div class="filters">
+  {% for v, label in [("to_call","To call"),("due","Follow-ups due"),("interested","Interested"),("later","Scheduled later"),("closed","Closed"),("all","All")] %}
+  <a class="{{ 'on' if view == v }}" href="/calls?view={{ v }}">{{ label }}</a>
+  {% endfor %}
+</div>
+{% if not rows %}<div class="card">Nothing here right now. 🎉</div>{% else %}
+<div class="table-wrap"><table>
+<tr><th>#</th><th>Business</th><th>City</th><th>Phone</th><th>Status</th><th></th></tr>
+{% for r in rows %}
+<tr>
+  <td>{{ loop.index }}</td>
+  <td><a href="/call/{{ key_of(r) }}"><strong>{{ r.name }}</strong></a>
+      {% if r.priority == '1' %}<br><span class="pill warn">No website: relies on phone</span>{% endif %}
+      {% if r.email_draft_ready == 'yes' %}<span class="pill">email drafted</span>{% endif %}</td>
+  <td>{{ r.city }}</td>
+  <td><a href="tel:{{ r.phone }}">{{ r.phone }}</a></td>
+  <td>{% set b = bucket(r) %}
+      {% if not r.result %}<span class="pill">Not called</span>
+      {% elif b == 'interested' %}<span class="pill good">{{ r.result }}</span>
+      {% elif b == 'closed' %}<span class="pill bad">{{ r.result }}</span>
+      {% else %}<span class="pill warn">{{ r.result }}</span>{% endif %}
+      {% if r.follow_up_date %}<div class="small muted">follow up {{ r.follow_up_date }}</div>{% endif %}</td>
+  <td><a class="btn small" href="/call/{{ key_of(r) }}">Open</a></td>
+</tr>
+{% endfor %}
+</table></div>
+{% endif %}
+{% endblock %}
