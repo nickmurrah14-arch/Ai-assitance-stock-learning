@@ -1,0 +1,4 @@
+.env
+data/*.csv
+data/suppression.txt
+__pycache__/
