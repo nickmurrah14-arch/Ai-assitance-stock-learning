@@ -42,6 +42,9 @@ class FloridaLeadsTests(unittest.TestCase):
         self.assertTrue(matches(html, "Deltona Heat And Air INC", "Deltona"))
         self.assertFalse(matches("<h1>Jims Plumbing</h1> Austin, Texas", "Jim's Plumbing INC", "Deltona"))
         self.assertFalse(matches("This domain is for sale! plumbing florida", "Cool Force LLC", "Deltona"))
+        # Same name, different state: phone gives it away.
+        self.assertFalse(matches('<a href="tel:5125550100">Call</a> Emergency Air AC repair, Austin TX, Florida-style service',
+                                 "Emergency Air & Heat, LLC", "Enterprise"))
 
 
 if __name__ == "__main__":

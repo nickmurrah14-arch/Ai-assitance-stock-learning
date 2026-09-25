@@ -34,11 +34,22 @@ CHAT_HINTS = (
 )
 
 
+FREE_MAIL = ("gmail.com", "yahoo.com", "outlook.com", "hotmail.com", "aol.com", "icloud.com", "live.com",
+             "msn.com", "bellsouth.net", "att.net", "comcast.net", "cfl.rr.com", "earthlink.net", "me.com")
+PLACEHOLDER_EMAIL = re.compile(r"^(john|jane)@doe\.|^(name|email|your|you|user|test|someone)@", re.I)
+LOCAL_AREA_CODES = {"386", "407", "321", "689", "352", "904"}
+
+
 def find_emails(html: str, site_domain: str) -> list[str]:
+    """Emails on the business's own domain, or a free-mail address (small shops often use Gmail).
+    Other domains are usually the web designer or a template, so they're skipped."""
     found = []
     for e in EMAIL_RE.findall(html):
         e = e.lower().rstrip(".")
-        if JUNK_EMAIL.search(e) or e in found:
+        if JUNK_EMAIL.search(e) or PLACEHOLDER_EMAIL.search(e) or e in found:
+            continue
+        domain = e.split("@")[1]
+        if not (domain == site_domain or domain.endswith("." + site_domain) or domain in FREE_MAIL):
             continue
         found.append(e)
     # Prefer addresses on the business's own domain, then generic role inboxes.
@@ -49,10 +60,15 @@ def find_emails(html: str, site_domain: str) -> list[str]:
 PHONE_RE = re.compile(r"\(?\b([2-9]\d{2})\)?[\s.-]?([2-9]\d{2})[\s.-]?(\d{4})\b")
 
 
+def visible_text(html: str) -> str:
+    html = re.sub(r"(?is)<(script|style|noscript)[^>]*>.*?</\1>", " ", html)
+    return re.sub(r"<[^>]+>", " ", html)
+
+
 def find_phone(html: str) -> str:
-    """First tel: link, else the first US-looking number on the page."""
+    """First tel: link, else the first US-looking number in the visible text."""
     tel = re.search(r'href=["\']tel:([^"\']+)', html, re.I)
-    m = PHONE_RE.search(tel.group(1) if tel else re.sub(r"<[^>]+>", " ", html))
+    m = PHONE_RE.search(tel.group(1) if tel else visible_text(html))
     return f"({m.group(1)}) {m.group(2)}-{m.group(3)}" if m else ""
 
 
@@ -140,8 +156,11 @@ def audit(lead: dict, use_pagespeed: bool) -> dict:
                     if emails:
                         break
             a["email"] = emails[0] if emails else ""
+            site_phone = find_phone(html)
             if not lead.get("phone"):
-                a["phone"] = find_phone(html)
+                a["phone"] = site_phone
+            if site_phone and site_phone[1:4] not in LOCAL_AREA_CODES:
+                a["site_check"] = f"verify: site's phone {site_phone} isn't a Central Florida number - may be a different company"
             if use_pagespeed:
                 try:
                     a["mobile_score"] = pagespeed(final_url)

@@ -24,7 +24,9 @@ GENERIC = {"air", "heating", "cooling", "heat", "cool", "conditioning", "plumbin
            "services", "service", "systems", "and", "of", "florida", "central", "hvac", "ac", "a",
            "contractors", "contracting", "solutions", "repair", "home", "comfort", "pro", "pros"}
 TRADE_RE = re.compile(r"plumb|air condition|\bhvac\b|\ba/?c\b|cooling|heating|heat pump|water heater|drain", re.I)
-LOCAL_RE = re.compile(r"florida|\bfl\b|\(?386\)?|\(?407\)?|\(?321\)?|\(?689\)?", re.I)
+LOCAL_RE = re.compile(r"florida|,\s*fl\b|\bfl\s+3[2-4]\d{3}|\(?\b(386|407|321|689)\)?[\s.-]?\d{3}[\s.-]?\d{4}", re.I)
+NONLOCAL_PHONE_RE = re.compile(r"\(?\b([2-9]\d{2})\)?[\s.-]?[2-9]\d{2}[\s.-]?\d{4}")
+LOCAL_CODES = {"386", "407", "321", "689", "352", "904"}
 PARKED_RE = re.compile(r"domain (is )?for sale|buy this domain|parked free|this domain may be for sale|godaddy\.com/domainsearch", re.I)
 
 
@@ -50,9 +52,14 @@ def candidates(name: str) -> list[str]:
 
 
 def matches(html: str, name: str, city: str) -> bool:
+    html = re.sub(r"(?is)<(script|style|noscript)[^>]*>.*?</\1>", " ", html)
     text = re.sub(r"<[^>]+>", " ", html)
     if PARKED_RE.search(text):
         return False
+    tel = re.search(r'href=["\']tel:([^"\']+)', html, re.I)
+    first_phone = NONLOCAL_PHONE_RE.search(tel.group(1) if tel else text)
+    if first_phone and first_phone.group(1) not in LOCAL_CODES:
+        return False  # same name, different state
     distinctive = [x for x in words(name) if x not in GENERIC and len(x) > 2]
     if distinctive and not any(re.search(rf"\b{re.escape(x)}\b", text, re.I) for x in distinctive):
         return False
@@ -77,10 +84,15 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=100, help="how many rows (top of the list) to try")
     ap.add_argument("--export", action="store_true", help="copy the processed rows into data/leads.csv")
+    ap.add_argument("--recheck", action="store_true", help="re-verify websites found earlier by guessing")
     args = ap.parse_args()
     rows = read_rows(SRC)
     if not rows:
         raise SystemExit("Run florida_leads.py first")
+    if args.recheck:
+        for r in rows[: args.limit]:
+            if r.get("website_source") == "guess":
+                r["website"], r["website_source"] = "", ""
     todo = [r for r in rows[: args.limit] if not r.get("website") and r.get("website_source") != "guess-none"]
     print(f"Trying domains for {len(todo)} businesses...")
     with ThreadPoolExecutor(max_workers=12) as pool:

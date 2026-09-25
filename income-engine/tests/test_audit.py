@@ -50,10 +50,15 @@ class AuditTests(unittest.TestCase):
     def test_dbpr_lead_without_website(self):
         self.assertIn("couldn't find", issues_for({"website": "", "source": "dbpr"}, {})[0])
 
+    def test_find_emails_skips_designer_and_placeholder_addresses(self):
+        html = "eben@eyebytes.com john@doe.com owner@acme.com bob.acme@gmail.com admin@otherplumber.com"
+        self.assertEqual(find_emails(html, "acme.com"), ["owner@acme.com", "bob.acme@gmail.com"])
+
     def test_find_phone(self):
         self.assertEqual(find_phone('<a href="tel:+1-386-555-0123">Call</a>'), "(386) 555-0123")
         self.assertEqual(find_phone("<p>Call (407) 555-9876 today</p>"), "(407) 555-9876")
         self.assertEqual(find_phone("<p>since 1998</p>"), "")
+        self.assertEqual(find_phone("<script>var x=5125551234</script><p>(386) 555-0100</p>"), "(386) 555-0100")
 
 
 if __name__ == "__main__":
