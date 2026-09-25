@@ -46,6 +46,16 @@ def find_emails(html: str, site_domain: str) -> list[str]:
     return found
 
 
+PHONE_RE = re.compile(r"\(?\b([2-9]\d{2})\)?[\s.-]?([2-9]\d{2})[\s.-]?(\d{4})\b")
+
+
+def find_phone(html: str) -> str:
+    """First tel: link, else the first US-looking number on the page."""
+    tel = re.search(r'href=["\']tel:([^"\']+)', html, re.I)
+    m = PHONE_RE.search(tel.group(1) if tel else re.sub(r"<[^>]+>", " ", html))
+    return f"({m.group(1)}) {m.group(2)}-{m.group(3)}" if m else ""
+
+
 def analyze_html(html: str, url: str) -> dict:
     low = html.lower()
     years = [int(y) for y in re.findall(r"(?:©|&copy;|copyright)\s*(?:\d{4}\s*[-–]\s*)?(20\d{2})", low)]
@@ -62,6 +72,8 @@ def analyze_html(html: str, url: str) -> dict:
 def issues_for(lead: dict, a: dict) -> list[str]:
     """Plain-English problems a business owner would care about."""
     if not lead.get("website"):
+        if lead.get("source") == "dbpr":
+            return ["couldn't find a website for the business online"]
         return ["no website listed on Google - customers searching can't learn more or contact you online"]
     if a.get("error"):
         return [f"website didn't load when we checked ({a['error']})"]
@@ -83,8 +95,8 @@ def issues_for(lead: dict, a: dict) -> list[str]:
     if a.get("mobile_score") not in ("", None) and int(a["mobile_score"]) < 50:
         out.append(f"Google PageSpeed mobile score is {a['mobile_score']}/100")
     try:
-        if int(lead.get("reviews") or 0) < 25:
-            out.append(f"only {lead.get('reviews') or 0} Google reviews")
+        if lead.get("reviews") not in ("", None) and int(lead["reviews"]) < 25:
+            out.append(f"only {lead['reviews']} Google reviews")
     except ValueError:
         pass
     return out
@@ -128,6 +140,8 @@ def audit(lead: dict, use_pagespeed: bool) -> dict:
                     if emails:
                         break
             a["email"] = emails[0] if emails else ""
+            if not lead.get("phone"):
+                a["phone"] = find_phone(html)
             if use_pagespeed:
                 try:
                     a["mobile_score"] = pagespeed(final_url)
