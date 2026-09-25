@@ -7,7 +7,7 @@ Research date: September 2026. Goal: get paying customers fast, with as much of 
 1. **Nothing legitimate is 100% passive at the start.** Anything sold as "fully passive AI income" is usually selling you a course. What *can* be automated is the hard, boring part: **finding customers, researching them, writing to them, and following up.** You (plus Claude Code) handle the ~20% that closes deals and delivers the work. Once you have clients on monthly plans, the income becomes mostly passive.
 2. **Best odds right now:** sell a simple **AI "never miss a lead" setup to local service businesses** (plumbers, HVAC, roofers, dentists, med spas, law firms, auto shops). Find them automatically with this repo's pipeline. Charge a setup fee plus a monthly fee.
 3. **Run a second channel at the same time:** list the same skills as a gig on **Upwork/Fiverr**. There, buyers come to you, which is the fastest path to the first dollar.
-4. **Skip:** trading bots, faceless AI YouTube channels, and dropshipping. The data on each is below.
+4. **Skip:** trading bots and faceless AI YouTube channels. **Dropshipping** can work, but only one version of it (high-priced products from US suppliers, sold through Google Shopping) and only if you can risk $1,500–3,000. The cheap-products-from-China version mostly loses money in 2026. See [section 7](#7-dropshipping-the-version-that-can-still-work).
 
 ---
 
@@ -31,6 +31,8 @@ It's roughly right for the whole population, but it's the wrong number to act on
 | **Upwork/Fiverr automation gigs** (n8n, Zapier, AI agents) | 1–4 weeks | Good, but competitive | Low, since it's client work | **Do in parallel** |
 | Micro-SaaS product | 3–6+ months; early revenue is often $50–500/mo ([ideaproof](https://ideaproof.io/lists/micro-saas-ideas)) | Low without an audience | High once it's built | Later: turn the service into a product |
 | Trading / trading bots | Instant, but negative on average | Only 1–4% of day traders stay profitable; 70–80%+ of retail bots lose money ([Vetted Prop Firms](https://vettedpropfirms.com/what-percentage-of-day-traders-lose-money/), [Tradewink](https://www.tradewink.com/learn/are-trading-bots-profitable)) | 100% | **Avoid as an income plan** |
+| Dropshipping, classic (cheap AliExpress products + TikTok/Meta ads) | 2–6 weeks to a first sale, 3–6 months to profit | 80–90% of stores fail, and only 1–5% build a lasting business ([TrueProfit](https://trueprofit.io/blog/dropshipping-success-rate)). New 10–54% import duties make it worse | High | **Avoid** |
+| Dropshipping, high-ticket ($300+ products, US suppliers, Google Shopping) | 3–8 weeks (suppliers must approve you) | Moderate if the math checks out first | Store ops ~80% | **Only with $1.5–3k to risk.** See §7 |
 | Faceless AI YouTube | 4–6+ months to monetize | YouTube cut monetization for mass-produced "AI slop" on Jul 16, 2026 ([source](https://www.facelessyoutubechannelidea.com/p/the-harsh-truth-about-youtube-automation-no-one-talks-about-2026-update)) | High | **Avoid** |
 
 Why a service beats a product for speed: AI made building software cheap, so **distribution is the whole game** ([ideaproof](https://ideaproof.io/lists/micro-saas-ideas)). A service sells on a single conversation. A product needs traffic and trust you don't have yet.
@@ -125,6 +127,40 @@ Setup commands are in [README.md](README.md).
 - Schedule the pipeline to run daily with cron or a Claude Code routine. Your daily job becomes approving drafts (5 min) and taking calls.
 - After 10+ clients, consider turning the setup into a self-serve micro-SaaS for the same niche. By then you'll have the audience and testimonials a product needs.
 
+## 7. Dropshipping: the version that can still work
+
+**What changed in 2025–26:**
+
+- The US ended the **$800 duty-free allowance (de minimis)** for Chinese goods in May 2025 and for all countries on Aug 29, 2025. Every package now pays duty, roughly **10–54%** depending on product and origin. A $40 order now carries about $12–22 in extra tariffs and fees ([Practical Ecommerce](https://www.practicalecommerce.com/ecommerce-after-de-minimis-tariff-exemption), [CMGM](https://www.cmgm.net/us-de-minimis-exemption-ended-2026-china/), [TariffWise](https://tariffwise.co/news/shein-temu-tariffs-2026/)).
+- Ads cost more. The median Meta cost per purchase is about **$38–49**, and CPMs rose about 20% year over year ([Top Growth Marketing](https://topgrowthmarketing.com/dtc-ecommerce-benchmarks/meta-ads-benchmarks/), [Ryze](https://www.get-ryze.ai/blog/meta-ads-cost-ecommerce-average-spend-roas)).
+- **The math for a classic store:** you sell a $35 gadget with about $10 profit before ads, but ads cost about $40 per sale, so you lose about $30 on every order. That's why 80–90% of stores fail ([TrueProfit](https://trueprofit.io/blog/dropshipping-success-rate)).
+- New stores often get **payouts held**: Shopify can keep 20% of payouts for up to 120 days, and chargebacks above ~1% trigger it ([Shopify Community](https://community.shopify.com/t/20-reserve-on-payouts-because-of-dropshipping/347340)). The **FTC Mail Order Rule** says you must ship within the time you promise, or within 30 days if you promise nothing ([FTC](https://www.ftc.gov/business-guidance/resources/business-guide-ftcs-mail-internet-or-telephone-order-merchandise-rule)).
+
+**The version with real odds: high-ticket, US-supplier, search-driven**
+
+- **Products priced $300–3,000** (standing desks, saunas, e-bikes, ergonomic chairs, commercial kitchen gear, outdoor furniture, home gym equipment). The ad cost per sale stays about the same while profit per order is 5–20x larger. On a $1,500 sale, about $175 net after freight, fees, ads and returns is realistic ([Branvas](https://branvas.com/blogs/news/high-ticket-dropshipping-niches)).
+- **US suppliers only.** Authorized-dealer programs you apply to on brand websites, or US wholesale distributors. This avoids import duties and gives 2–7 day shipping. You apply to suppliers rather than just signing up, which keeps competition lower ([Dropshipping Champions](https://dropshippingchampions.com/blog/high-ticket-dropshipping-suppliers), [SaleHoo](https://www.salehoo.com/learn/high-ticket-dropshipping)).
+- **Google Shopping ads, not TikTok.** People searching "commercial ice maker 300 lb" already want to buy. TikTok viewers are scrolling for fun ([Spocket](https://www.spocket.co/blogs/a-guide-to-high-ticket-dropshipping-with-us-suppliers)).
+- **Where AI and code give you an edge:** generating hundreds of accurate product pages and SEO copy, keeping the product feed synced with supplier stock and prices, answering pre-sale questions 24/7 (high-ticket buyers ask a lot), and automating order routing to suppliers. Most dropshippers do these by hand.
+
+**Check the numbers before spending anything.** Run the calculator:
+
+```bash
+python dropship_calc.py --price 1200 --cost 780 --shipping 0 --cpa 90
+python dropship_calc.py --price 35 --cost 12 --shipping 6 --cpa 40 --duty 0.25   # the classic store, for comparison
+```
+
+It shows profit per order, the most you can pay in ads per sale and still break even, and roughly how much you need to test. **If break-even CPA isn't at least ~1.5x the expected CPA, pick another product.**
+
+**Launch plan (runs alongside the service business, doesn't replace it):**
+
+1. Week 1: pick 1 niche. Apply to 10–20 US suppliers (expect about 30–50% approval). Open Shopify ($39/mo) with a real business name, returns policy, phone number and shipping times.
+2. Week 2–3: load 20–100 products from approved suppliers. Claude writes the descriptions, and you check the specs. Set up Google Merchant Center.
+3. Week 3–6: run Google Shopping with **$30–50/day** and a hard stop at your test budget. Answer every pre-sale question fast.
+4. Kill it or scale it based on actual net profit per order (fees, returns and chargebacks included), not revenue.
+
+Cash needed: about **$1,500–3,000** (ads plus 1–2 months of apps), and you can lose it. The service business in §3 needs about $100–200 to start. That's why it stays first priority for the fastest, lowest-risk income.
+
 ## Sources
 
 - AI coding adoption: [SQ Magazine](https://sqmagazine.co.uk/ai-coding-statistics/), [Panto](https://www.getpanto.ai/blog/ai-coding-tools-adoption-statistics-by-country), [Second Talent](https://www.secondtalent.com/resources/ai-coding-assistant-statistics/)
@@ -134,6 +170,7 @@ Setup commands are in [README.md](README.md).
 - Deliverability & law: [Instantly](https://instantly.ai/blog/how-to-achieve-90-cold-email-deliverability-in-2025/), [Mailpool](https://mailpool.ai/blog/googles-2026-bulk-sender-rules-what-cold-email-teams-must-change-without-killing-volume), [LiteMail](https://litemail.ai/blog/cold-email-compliance-checklist-2026), [Retell (TCPA)](https://www.retellai.com/blog/tcpa-compliance-playbook-voice-ai-outbound)
 - Freelance demand: [Upwork n8n experts](https://www.upwork.com/hire/n8n-experts/), [Upwork AI automation engineers](https://www.upwork.com/hire/ai-automation-engineers/)
 - Micro-SaaS timelines: [ideaproof](https://ideaproof.io/lists/micro-saas-ideas), [Infinity Sky AI](https://infinitysky.ai/blog/launch-micro-saas-ai-big-revenue)
+- Dropshipping: [TrueProfit](https://trueprofit.io/blog/dropshipping-success-rate), [Practical Ecommerce (de minimis)](https://www.practicalecommerce.com/ecommerce-after-de-minimis-tariff-exemption), [TariffWise](https://tariffwise.co/news/shein-temu-tariffs-2026/), [Top Growth Marketing (Meta benchmarks)](https://topgrowthmarketing.com/dtc-ecommerce-benchmarks/meta-ads-benchmarks/), [Branvas](https://branvas.com/blogs/news/high-ticket-dropshipping-niches), [SaleHoo](https://www.salehoo.com/learn/high-ticket-dropshipping), [Spocket](https://www.spocket.co/blogs/a-guide-to-high-ticket-dropshipping-with-us-suppliers), [FTC Mail Order Rule](https://www.ftc.gov/business-guidance/resources/business-guide-ftcs-mail-internet-or-telephone-order-merchandise-rule)
 - Trading odds: [Vetted Prop Firms](https://vettedpropfirms.com/what-percentage-of-day-traders-lose-money/), [Tradewink](https://www.tradewink.com/learn/are-trading-bots-profitable)
 - Agency model criticism (worth reading): [LinkedIn – "why this business model is broken"](https://www.linkedin.com/pulse/what-i-learned-building-ai-automation-agency-why-nadia-privalikhina-atk0f)
 - Open-source tools: [omkarcloud/google-maps-scraper](https://github.com/omkarcloud/google-maps-scraper) (alternative lead source), [warmbly/warmbly](https://github.com/warmbly/warmbly) (open-source outreach + warmup)

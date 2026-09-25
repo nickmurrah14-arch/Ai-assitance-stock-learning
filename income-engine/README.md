@@ -26,6 +26,14 @@ python send_emails.py --followups --send   # bump non-repliers after 4 days
 
 When someone replies, change their row in `data/drafts.csv` to `status=replied`. If they asked to stop, also add their email to `data/suppression.txt`.
 
+## Dropshipping calculator
+
+Check whether a product can make money after ads before you spend on it (see PLAYBOOK §7):
+
+```bash
+python dropship_calc.py --price 1200 --cost 780 --cpa 90
+```
+
 ## Tests
 
 ```bash
