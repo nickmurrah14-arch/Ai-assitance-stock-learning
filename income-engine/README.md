@@ -12,6 +12,20 @@ pip install -r requirements.txt
 cp .env.example .env   # fill in API keys, your name, postal address, offer, SMTP
 ```
 
+## Free Florida workflow (no Google key, no card)
+
+```bash
+python florida_leads.py                         # every licensed AC/mechanical/plumbing business in Volusia + Seminole -> data/fl_licensees.csv
+python enrich_websites.py --limit 250 --export  # find & verify websites for the closest 250 -> data/leads.csv
+#   optional: add phones/websites/notes you look up by hand to data/manual_research.csv (name,phone,website,notes,skip)
+python apply_research.py                        # merge that research in
+python audit_sites.py                           # audit sites, find emails and phones -> data/audited.csv
+python import_drafts.py                         # emails written in chat (data/drafts_written.jsonl) -> data/drafts.csv as drafts
+python make_call_sheet.py                       # everyone with a phone number, best first -> data/call_sheet.csv
+```
+
+Nothing is emailed until you set `status=approved` in `data/drafts.csv` and run `send_emails.py --send`.
+
 ## Daily run
 
 ```bash
