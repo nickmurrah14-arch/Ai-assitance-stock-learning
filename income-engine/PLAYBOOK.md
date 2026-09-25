@@ -53,7 +53,9 @@ Why a service beats a product for speed: AI made building software cheap, so **d
 3. **Instant alert** to the owner with a summary of every lead.
 4. Optional upsell: **automatic review requests** after each job. The audit flags businesses with fewer than 25 Google reviews.
 
-**How to build it:**
+**Built for you:** see [`lead-responder/`](../lead-responder/README.md). It does missed-call text-back, AI texting that collects the job details, emergency handling and owner alerts, on Twilio + Claude, for about $10–15/mo per client.
+
+**Other ways to build it:**
 
 - Fastest: GoHighLevel (~$97/mo, which covers unlimited clients). Missed-call text-back, chat widget, and review requests are built in, and you can white-label it.
 - Cheapest and most flexible: Twilio plus n8n (self-hosted) plus the Claude API.
@@ -99,6 +101,20 @@ Setup commands are in [README.md](README.md).
 - The missed-call text-back you sell is a reply to someone who just called the business, which is generally treated differently. Still include "Reply STOP to opt out" and honor it. Have a lawyer glance at your client setup once you have a few clients. This playbook is not legal advice.
 
 ## 6. First 30 days
+
+**Chosen setup:** HVAC and plumbing, in your own area, built on our own system (`lead-responder/`), with a starting budget of about **$150**:
+
+| Item | First month |
+|---|---|
+| 2 sending domains (~$10–15/yr each) | ~$25 |
+| 2 Google Workspace inboxes (~$7–9 each/mo) | ~$16 |
+| Twilio: top-up covers the demo number, sole-proprietor A2P brand ($4) and campaign vetting ($15) | $20 |
+| Anthropic API credits (drafting emails + demo conversations) | $10–20 |
+| App hosting | ~$5 |
+| Google Places, PageSpeed, Calendly | free tiers |
+| **Total** | **~$95–105**, leaving ~$45 buffer |
+
+Each client's own A2P registration (~$20–35) is paid out of their setup fee.
 
 **Week 1: set up (about 5–8 hours total)**
 

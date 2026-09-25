@@ -1,0 +1,4 @@
+anthropic>=1.8
+twilio>=9
+flask>=3
+gunicorn>=22

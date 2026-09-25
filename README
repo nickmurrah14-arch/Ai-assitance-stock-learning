@@ -27,3 +27,7 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 ## 💸 Income Engine
 
 See [`income-engine/`](income-engine/) for an automated lead-finding and outreach pipeline, plus a research-backed playbook ([PLAYBOOK.md](income-engine/PLAYBOOK.md)) on the fastest realistic ways to earn with AI.
+
+## 📞 Lead Responder
+
+See [`lead-responder/`](lead-responder/) for the product: missed-call text-back plus AI texting for HVAC and plumbing businesses (Twilio + Claude).

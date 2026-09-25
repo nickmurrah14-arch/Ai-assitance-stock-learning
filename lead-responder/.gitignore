@@ -1,0 +1,4 @@
+.env
+clients.json
+*.db
+__pycache__/
