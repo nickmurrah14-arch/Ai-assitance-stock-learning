@@ -112,6 +112,19 @@ class ResponderTests(unittest.TestCase):
             r.incoming_sms(BIZ, CUST, f"msg {i}")
         self.assertEqual(brain.calls, 15)
 
+    def test_no_ai_mode_forwards_to_owner_and_replies_once(self):
+        store = Store(Path(tempfile.mkdtemp()) / "t.db")
+        sender, brain = FakeSender(), FakeBrain([])
+        clients = {BIZ: {"name": "Acme Plumbing", "owner_cell": OWNER, "ai": False}}
+        r = Responder(store, brain, sender, clients)
+        r.missed_call(BIZ, CUST)
+        r.incoming_sms(BIZ, CUST, "water heater leaking")
+        r.incoming_sms(BIZ, CUST, "also it's making noise")
+        self.assertEqual(brain.calls, 0)
+        self.assertEqual(len(sender.to(CUST)), 2)  # missed-call text + one auto-reply
+        self.assertEqual(sum("water heater leaking" in b for b in sender.to(OWNER)), 1)
+        self.assertEqual(sum("making noise" in b for b in sender.to(OWNER)), 1)
+
 
 class RecordingResponder:
     def __init__(self):

@@ -4,6 +4,7 @@ Great for tuning the prompt and for recording the sales demo video.
 
     python simulate.py                      # uses the first business in clients.json (or the example)
     python simulate.py --business +15551234567
+    python simulate.py --no-ai              # free: no Claude API key needed
 """
 import argparse
 import json
@@ -30,11 +31,14 @@ class PrintSender:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--business", help="Twilio number key in clients.json")
+    ap.add_argument("--no-ai", action="store_true", help="fixed replies only (no API key needed)")
     args = ap.parse_args()
     path = ROOT / "clients.json"
     clients = json.loads((path if path.exists() else ROOT / "clients.example.json").read_text())
     business = args.business or next(iter(clients))
     biz = clients[business]
+    if args.no_ai:
+        biz["ai"] = False
 
     db = Path(tempfile.mkdtemp()) / "sim.db"
     r = Responder(Store(db), ClaudeBrain(), PrintSender(biz.get("owner_cell", "")), clients)

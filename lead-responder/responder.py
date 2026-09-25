@@ -90,6 +90,9 @@ class Responder:
         if self.store.replies_since(business, caller, time.time() - 86400) >= MAX_AI_REPLIES_PER_DAY:
             return None
 
+        if biz.get("ai") is False:
+            return self._simple_reply(business, caller, body, biz)
+
         try:
             r = self.brain.respond(biz, self.store.thread(business, caller))
         except Exception:  # never leave a customer hanging because the AI call failed
@@ -110,3 +113,14 @@ class Responder:
             self._alert_owner(business, f"New lead ready for call back:\n{summary}")
             self.store.update_lead(business, caller, notified_at=now)
         return r["reply"]
+
+    def _simple_reply(self, business: str, caller: str, body: str, biz: dict) -> str | None:
+        """No-AI mode: forward every customer text to the owner; auto-reply once per day."""
+        self._alert_owner(business, f"Text from {caller}: {body[:300]}")
+        if self.store.replies_since(business, caller, time.time() - 86400) > 1:
+            return None  # already sent the missed-call text and one auto-reply today
+        reply = biz.get("simple_reply") or (
+            f"Thanks! We got your message and someone from {biz['name']} will call you back shortly."
+        )
+        self._text(business, caller, reply)
+        return reply

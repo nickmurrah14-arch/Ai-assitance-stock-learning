@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Missed Call Rescue | HVAC & Plumbing, Central Florida</title>
+<meta name="description" content="Every missed call gets a text back in seconds. An assistant that collects the job details and sends HVAC and plumbing companies in Volusia and Seminole counties the lead.">
+<!--
+  EDIT THESE before publishing (search for "EDIT"):
+  - Business name (currently "Missed Call Rescue")
+  - Your name, email, phone/booking link in the Contact section
+-->
+<style>
+:root {
+  --bg: #f7f8fa; --surface: #ffffff; --text: #16202c; --muted: #5b6776; --line: #e3e7ec;
+  --brand: #0b6bcb; --brand-ink: #ffffff; --accent: #e8590c; --bubble-in: #e9edf2; --bubble-out: #0b6bcb;
+  --alert: #fff4e6; --alert-line: #f2a65a; --urgent: #fdecec; --urgent-line: #e5484d;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f141a; --surface: #161d25; --text: #e7edf3; --muted: #9aa7b5; --line: #26303b;
+    --brand: #4c9ff0; --brand-ink: #0b1220; --accent: #ff8a3d; --bubble-in: #232d38; --bubble-out: #2f7fd1;
+    --alert: #2a2117; --alert-line: #a36a2c; --urgent: #2c1818; --urgent-line: #d9534f;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+a { color: var(--brand); }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+header { padding: 18px 0; border-bottom: 1px solid var(--line); background: var(--surface); }
+header .wrap { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.logo { font-weight: 800; letter-spacing: -.02em; }
+.btn { display: inline-block; white-space: nowrap; background: var(--brand); color: var(--brand-ink); padding: 12px 20px; border-radius: 10px; font-weight: 700; text-decoration: none; }
+.btn.ghost { background: transparent; color: var(--brand); border: 2px solid var(--brand); }
+.hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; padding: 56px 0 40px; }
+h1 { font-size: clamp(30px, 5vw, 46px); line-height: 1.1; letter-spacing: -.03em; margin: 0 0 16px; }
+.lead { font-size: 19px; color: var(--muted); margin: 0 0 24px; }
+.ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.phone { background: var(--surface); border: 1px solid var(--line); border-radius: 28px; padding: 18px 14px; box-shadow: 0 12px 40px rgba(0,0,0,.08); max-width: 380px; margin: 0 auto; width: 100%; }
+.phone .bar { text-align: center; font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+.tabs { display: flex; gap: 6px; justify-content: center; margin-bottom: 12px; }
+.tabs button { font: inherit; font-size: 13px; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--text); cursor: pointer; }
+.tabs button[aria-pressed="true"] { background: var(--brand); color: var(--brand-ink); border-color: var(--brand); }
+.chat { display: flex; flex-direction: column; gap: 8px; min-height: 360px; }
+.msg { max-width: 82%; padding: 9px 12px; border-radius: 16px; font-size: 15px; line-height: 1.35; animation: pop .25s ease-out both; }
+.msg.in { align-self: flex-start; background: var(--bubble-in); border-bottom-left-radius: 4px; }
+.msg.out { align-self: flex-end; background: var(--bubble-out); color: #fff; border-bottom-right-radius: 4px; }
+.msg.note { align-self: center; max-width: 100%; font-size: 13px; background: var(--alert); border: 1px solid var(--alert-line); border-radius: 10px; white-space: pre-line; }
+.msg.note.urgent { background: var(--urgent); border-color: var(--urgent-line); }
+.msg.sys { align-self: center; background: none; color: var(--muted); font-size: 12px; padding: 0; }
+@keyframes pop { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .msg { animation: none; } }
+section { padding: 44px 0; border-top: 1px solid var(--line); }
+h2 { font-size: 28px; letter-spacing: -.02em; margin: 0 0 18px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+.stat { font-size: 36px; font-weight: 800; color: var(--accent); letter-spacing: -.02em; }
+.small { font-size: 13px; color: var(--muted); }
+.price { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 720px; }
+.price .num { font-size: 40px; font-weight: 800; }
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; margin-bottom: 10px; }
+summary { font-weight: 700; cursor: pointer; }
+footer { padding: 30px 0 50px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+@media (max-width: 820px) {
+  header .btn { padding: 9px 14px; font-size: 15px; }
+  .hero { grid-template-columns: 1fr; padding-top: 32px; }
+  .grid3, .price { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="logo">Missed Call Rescue</div><!-- EDIT: business name -->
+    <a class="btn" href="#contact">Get a free demo</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <h1>Every missed call gets a text back in seconds.</h1>
+      <p class="lead">For HVAC and plumbing companies in Volusia and Seminole counties. When you can't pick up, your customer instantly gets a text. An assistant collects the job details, and you get the lead on your phone. Day or night.</p>
+      <div class="ctas">
+        <a class="btn" href="#contact">See a live demo</a>
+        <a class="btn ghost" href="#how">How it works</a>
+      </div>
+      <p class="small">Keep your current phone number. Set up in about a day. 30-day money-back guarantee on setup.</p>
+    </div>
+
+    <div class="phone" aria-label="Example text conversation">
+      <div class="bar">Example conversation</div>
+      <div class="tabs" role="group" aria-label="Choose an example">
+        <button type="button" data-demo="repair" aria-pressed="true">AC repair</button>
+        <button type="button" data-demo="emergency" aria-pressed="false">Emergency</button>
+      </div>
+      <div class="chat" id="chat" aria-live="polite"></div>
+    </div>
+  </div>
+</main>
+
+<section id="why">
+  <div class="wrap">
+    <h2>Missed calls are missed jobs</h2>
+    <div class="grid3">
+      <div class="card"><div class="stat">62%</div>of calls to small businesses go unanswered.<div class="small">Industry call-tracking data, 2026</div></div>
+      <div class="card"><div class="stat">85%</div>of people whose call isn't answered don't call back. They call the next company.<div class="small">Industry call-tracking data, 2026</div></div>
+      <div class="card"><div class="stat">9×</div>more likely to turn into a job when a lead hears back within 5 minutes instead of 30.<div class="small">Speed-to-lead research</div></div>
+    </div>
+    <p>You're on a roof, under a sink, or driving between jobs. You can't answer every call, and in Central Florida's heat nobody waits around for a callback when their AC quits. A text back in seconds keeps them talking to <em>you</em>.</p>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <div class="grid3">
+      <div class="card"><strong>1. A call goes unanswered</strong><p>Your phone forwards unanswered calls to your assistant line. You keep your number, and nothing changes for callers.</p></div>
+      <div class="card"><strong>2. They get a text within seconds</strong><p>"Sorry we missed your call! What can we help with?" The assistant gets their name, address, the problem, and when they're free. It only answers questions using facts you've approved.</p></div>
+      <div class="card"><strong>3. You get the lead</strong><p>A text with everything you need to call back and quote. Emergencies like a gas smell, flooding, or no AC for someone at risk get flagged to you right away.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <h2>Simple pricing</h2>
+    <div class="price">
+      <div class="card"><div class="small">One-time setup</div><div class="num">$497</div><p>We set up your line and call forwarding, load your services, hours, and service area, and test it with you.</p></div>
+      <div class="card"><div class="small">Monthly</div><div class="num">$197</div><p>Texting, the assistant, monitoring, and changes whenever you need them. No contract. Cancel anytime.</p></div>
+    </div>
+    <p><strong>Guarantee:</strong> if it doesn't recover at least one lead in your first 30 days, your setup fee is refunded.</p>
+    <p class="small">One saved AC repair or water-heater job usually covers the first month.</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2>Questions</h2>
+    <details><summary>Do I have to change my phone number?</summary><p>No. We turn on "forward when unanswered" on your existing line. Calls you pick up work exactly like today.</p></details>
+    <details><summary>Will it say something wrong to my customers?</summary><p>It only uses the facts you give us (services, hours, area, emergency policy). It never quotes prices or promises arrival times. It tells customers your team will confirm those on the call.</p></details>
+    <details><summary>What about emergencies?</summary><p>If someone mentions a gas smell, carbon monoxide, sparking or smoke, it tells them to get out and call 911 or the gas company, and alerts you immediately. Flooding and no AC for someone at risk also get flagged urgent.</p></details>
+    <details><summary>Does it pretend to be a person?</summary><p>No. It says it's your automated assistant, and customers can text STOP at any time.</p></details>
+    <details><summary>What do I need to do?</summary><p>About 20 minutes on a call with us to go over your services and hours, and one call-forwarding setting on your phone. We handle the rest.</p></details>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2>See it work, live</h2>
+    <p>I'm local, based in Deltona. In 10 minutes I'll show you a live missed call turning into a text conversation and a lead alert, in person or over video. No cost, no pressure.</p>
+    <!-- EDIT: replace with your real contact details -->
+    <p class="ctas">
+      <a class="btn" href="mailto:YOUR-EMAIL@example.com?subject=Missed%20call%20demo">Email me</a>
+      <a class="btn ghost" href="tel:+1XXXXXXXXXX">Call or text</a>
+    </p>
+    <p class="small">YOUR NAME · Deltona, FL</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© <span id="yr"></span> Missed Call Rescue · Deltona, FL · Texts include opt-out; message and data rates may apply.</div>
+</footer>
+
+<script>
+const demos = {
+  repair: [
+    ["sys", "Missed call · 2:14 PM"],
+    ["out", "Hi, this is Sample Air & Plumbing. Sorry we missed your call! I'm our automated assistant. What can we help you with today? Reply STOP to opt out."],
+    ["in", "my AC is blowing warm air and it's 88 in the house"],
+    ["out", "Sorry, that's miserable in this heat. What's your name, and the address where the unit is?"],
+    ["in", "Maria, 123 Example St, Deltona"],
+    ["out", "Thanks Maria. Is today or tomorrow better for a tech, and is this number the best one to call?"],
+    ["in", "today after 3 please, yes this number"],
+    ["out", "Got it. Someone from our team will call you within 15 minutes to confirm a time."],
+    ["note", "📲 To owner: New lead\nMaria · 123 Example St, Deltona\nAC blowing warm, 88° inside\nAvailable today after 3"],
+  ],
+  emergency: [
+    ["sys", "Missed call · 11:48 PM"],
+    ["out", "Hi, this is Sample Air & Plumbing. Sorry we missed your call! I'm our automated assistant. What can we help you with today? Reply STOP to opt out."],
+    ["in", "i smell gas near the water heater"],
+    ["out", "Please leave the house now, don't use light switches, and call 911 or your gas company's emergency line from outside. I'm alerting our on-call tech right now."],
+    ["note urgent", "🚨 To owner: URGENT, possible gas leak\nCaller told to evacuate and call 911\nCall back now"],
+  ],
+};
+const chat = document.getElementById("chat");
+let timer;
+function play(name) {
+  clearTimeout(timer);
+  chat.innerHTML = "";
+  const steps = demos[name];
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let i = 0;
+  (function next() {
+    if (i >= steps.length) return;
+    const [kind, text] = steps[i++];
+    const el = document.createElement("div");
+    el.className = "msg " + kind;
+    el.textContent = text;
+    chat.appendChild(el);
+    timer = setTimeout(next, reduce ? 0 : 900);
+  })();
+}
+document.querySelectorAll("[data-demo]").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll("[data-demo]").forEach(x => x.setAttribute("aria-pressed", x === b));
+  play(b.dataset.demo);
+}));
+document.getElementById("yr").textContent = new Date().getFullYear();
+play("repair");
+</script>
+</body>
+</html>

@@ -65,6 +65,10 @@ Set the environment variables from `.env.example`, and create `clients.json` fro
 
 **Pitch math for the owner:** "The average HVAC repair is a few hundred dollars, and an install is several thousand. If this saves one job a month, it pays for itself many times over."
 
+## No-AI mode (cheapest, and a free live demo)
+
+Set `"ai": false` on a client in `clients.json`. Missed callers still get the instant text, but every reply is forwarded to the owner, and the customer gets one fixed auto-reply (`"simple_reply"`, optional). It makes no Claude calls, so it's free to run apart from Twilio. Use it for the $150 Fiverr basic package, or to demo live with just a Twilio free trial.
+
 ## Tests
 
 ```bash

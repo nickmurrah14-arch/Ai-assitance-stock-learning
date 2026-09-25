@@ -31,3 +31,8 @@ See [`income-engine/`](income-engine/) for an automated lead-finding and outreac
 ## 📞 Lead Responder
 
 See [`lead-responder/`](lead-responder/) for the product: missed-call text-back plus AI texting for HVAC and plumbing businesses (Twilio + Claude).
+
+## 🌐 Website & sales kit
+
+- [`docs/index.html`](docs/index.html): the sales website (publish free with GitHub Pages → Settings → Pages → Deploy from branch → `/docs`).
+- [`sales/SALES-KIT.md`](sales/SALES-KIT.md): pitch, call script, objections, onboarding questions, and Fiverr/Upwork copy.
