@@ -1,4 +1,5 @@
 .env
-data/*.csv
-data/suppression.txt
+# Lead data, research, drafts and logs stay on your computer only.
+data/*
+!data/.gitkeep
 __pycache__/
