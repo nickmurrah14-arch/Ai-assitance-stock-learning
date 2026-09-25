@@ -47,8 +47,14 @@ def build(row: dict, in_reply_to: str = "") -> EmailMessage:
         msg["In-Reply-To"] = in_reply_to
         msg["References"] = in_reply_to
     msg["List-Unsubscribe"] = f"<mailto:{config.SENDER_EMAIL}?subject=unsubscribe>"
-    msg.set_content(row["body"])
+    msg.set_content(row["body"].replace("{signature}", signature()))
     return msg
+
+
+def signature() -> str:
+    """Name, company, postal address (CAN-SPAM) and the opt-out line."""
+    sig = [s for s in (config.SENDER_NAME, config.SENDER_COMPANY, config.SENDER_POSTAL_ADDRESS) if s]
+    return "\n".join(sig) + "\n\nNot interested? Reply \"stop\" and you won't hear from me again."
 
 
 def followup_queue(drafts: list[dict], suppressed: set[str]) -> list[dict]:
@@ -95,7 +101,8 @@ def main():
         return
     if not args.send:
         for d in queue:
-            print(f"--- would send to {d['email']} ---\nSubject: {d['subject']}\n\n{d['body']}\n")
+            body = d["body"].replace("{signature}", signature())
+            print(f"--- would send to {d['email']} ---\nSubject: {d['subject']}\n\n{body}\n")
         print(f"Dry run: {len(queue)} emails. Re-run with --send to send them.")
         return
 
