@@ -61,9 +61,18 @@ Set the environment variables from `.env.example`, and create `clients.json` fro
 | Your hosting, shared across all clients | ~$5 total |
 | **Your cost** | **~$10–15** |
 
-**Suggested price:** **$497 setup** (covers the ~$20–35 in registration fees and your onboarding time) + **$197/mo**. That's about $180/mo profit per client. For comparison, an answering service runs $100–500/mo and a part-time receptionist $1,500–2,500/mo.
+**Price (founding offer):** free setup and a free first 30 days, then **$197/mo**, with a slow-month guarantee (under 2 leads = that month is free). You cover the ~$20–35 registration fees up front. That's about $180/mo profit per client once they convert. See `sales/SALES-KIT.md` sections 0 and 9. For comparison, an answering service runs $100–500/mo and a part-time receptionist $1,500–2,500/mo.
 
 **Pitch math for the owner:** "The average HVAC repair is a few hundred dollars, and an install is several thousand. If this saves one job a month, it pays for itself many times over."
+
+## Results report
+
+```bash
+python report.py --business +1THEIRNUMBER --start 2026-10-01          # from go-live to today
+python report.py --business +1THEIRNUMBER --start 2026-10-01 --end 2026-10-31
+```
+
+It prints a short summary you can paste into a text, and writes a printable page to `reports/`. Add `"avg_job_value": 350` (their number) to the client in `clients.json` so the report shows what the leads were worth. "Leads" are callers who texted back and whose details were sent to the owner (in no-AI mode, any caller who texted back). The report also says whether the month falls under the slow-month guarantee (fewer than 2 leads).
 
 ## No-AI mode (cheapest, and a free live demo)
 
@@ -84,3 +93,4 @@ python -m unittest discover -s tests
 | `app.py` / `wsgi.py` | Twilio webhooks (`/voice`, `/voice/after`, `/sms`, `/health`) |
 | `store.py` | SQLite storage for conversations and lead state |
 | `simulate.py` | Terminal demo, no Twilio needed |
+| `report.py` | Results report per client (missed calls, replies, leads, estimated value). Send it around day 25 of the free month, then monthly |

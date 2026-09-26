@@ -145,8 +145,9 @@ def create_app() -> Flask:
         data = request.get_json(force=True)
         model = os.getenv("ANTHROPIC_MODEL", "claude-opus-5")
         system = ("You coach a local salesperson live on a phone call. They sell a missed-call text-back "
-                  "service to HVAC and plumbing companies ($497 setup, $197/mo, no contract, setup refunded "
-                  "if no lead recovered in 30 days; goes live after carrier texting approval, usually 1-2 weeks). "
+                  "service to HVAC and plumbing companies. The offer: " + PLAYBOOK["offer"]["one_liner"] + " "
+                  + " ".join(PLAYBOOK["offer"]["points"]) + " It goes live after carrier texting approval, "
+                  "usually 1-2 weeks. "
                   "They are new and have no other clients yet; never invent clients, results or features. "
                   "Given what the prospect just said, reply with ONE thing to say next: 1-3 short, natural "
                   "sentences, then a line starting 'Tip:' with one short coaching note. Plain text only.\n\n"

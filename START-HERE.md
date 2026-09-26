@@ -31,4 +31,6 @@ Everything lives in one place: **Business HQ**. On Windows, open the **Business 
 
 ## When someone says yes
 
-Collect the onboarding answers (Sales kit, section 6). Then upgrade Twilio (~$20), register their business for texting, host the app (~$5/mo), and fill in `lead-responder/clients.json`. The $497 setup fee covers all of it.
+The offer is **free setup + a free first 30 days, then $197/month** (Sales kit, section 0). Collect the onboarding answers (section 6), including their average job value. Then upgrade Twilio (~$20), register their business for texting, host the app (~$5/mo), and fill in `lead-responder/clients.json`. That's about $50 out of pocket before the first payment.
+
+Around day 25 of their free month, run `python lead-responder/report.py --business +1THEIRNUMBER --start <go-live date>` and send them the report. That's when you ask for the $197/month (Sales kit, section 9).

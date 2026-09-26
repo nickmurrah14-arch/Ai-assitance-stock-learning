@@ -22,6 +22,14 @@ CREATE TABLE IF NOT EXISTS leads (
     opted_out INTEGER NOT NULL DEFAULT 0,
     PRIMARY KEY (business, caller)
 );
+CREATE TABLE IF NOT EXISTS calls (
+    id INTEGER PRIMARY KEY,
+    business TEXT NOT NULL,
+    caller TEXT NOT NULL,
+    texted INTEGER NOT NULL,     -- 1 if the caller got the auto-text (0: opted out or texted recently)
+    ts REAL NOT NULL
+);
+CREATE INDEX IF NOT EXISTS calls_business ON calls (business, ts);
 """
 
 
@@ -43,6 +51,13 @@ class Store:
                 (business, caller, direction, body, time.time()),
             )
             db.execute("INSERT OR IGNORE INTO leads (business, caller) VALUES (?, ?)", (business, caller))
+
+    def log_call(self, business: str, caller: str, texted: bool) -> None:
+        with self._db() as db:
+            db.execute(
+                "INSERT INTO calls (business, caller, texted, ts) VALUES (?, ?, ?, ?)",
+                (business, caller, int(texted), time.time()),
+            )
 
     def thread(self, business: str, caller: str, limit: int = 30) -> list[dict]:
         with self._db() as db:

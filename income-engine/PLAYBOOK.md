@@ -61,13 +61,16 @@ Why a service beats a product for speed: AI made building software cheap, so **d
 - Cheapest and most flexible: Twilio plus n8n (self-hosted) plus the Claude API.
 - US business texting requires **A2P 10DLC registration** for each client's number. Budget 1–2 weeks for approval.
 
-**Pricing (start here, raise it after 5 clients):**
+**Pricing: the founding offer (first 5 clients).** Details and the day-by-day plan are in `sales/SALES-KIT.md` sections 0 and 9.
 
-- Setup fee: **$300–$750**. This covers your tool costs and filters out non-serious buyers.
-- Monthly: **$150–$300** for hosting, monitoring, and tweaks.
-- Guarantee: "If it doesn't recover at least one lead in the first 30 days, I refund the setup fee." This makes saying yes easy.
+- **Free setup and a free first 30 days** (from the day texting goes live). No card, no contract. You cover ~$25–40 per trial.
+- **Then $197/month**, locked in for as long as they stay. Cancel anytime.
+- **Slow-month guarantee:** any month it sends fewer than 2 leads is free.
+- A results report (`lead-responder/report.py`) around day 25 does the selling.
 
-**Example math, not a promise:** 5 clients = $1,500–$3,750 upfront plus $750–$1,500/mo recurring. 20 clients = $3,000–$6,000/mo, mostly passive.
+After the 5 founding spots, consider charging new clients a setup fee or a higher monthly price.
+
+**Example math, not a promise:** 5 clients at $197 = ~$985/mo recurring. 20 clients = ~$3,940/mo, mostly passive. The first payment arrives about 6 weeks after a yes (1–2 weeks for carrier approval, then the free 30 days).
 
 ## 4. The automated prospecting machine (this repo)
 
@@ -115,7 +118,7 @@ Setup commands are in [README.md](README.md).
 | Calendly free plan | $0 |
 | **Total** | **~$17–20** |
 
-Paid for later out of the **first client's $497 setup fee**: upgrading Twilio (~$20 top-up), their business-texting registration (~$20–35), and app hosting (~$5/mo).
+Paid when the first client says yes (before their first payment arrives): upgrading Twilio (~$20 top-up, which stays in the account as texting credit), their business-texting registration (~$20–35), and app hosting (~$5/mo). About $50 in total.
 
 **Upgrade when it's working:** add a second domain and inbox (~$12 + $1.25/mo) to go from 30 to 60 emails a day.
 
@@ -143,7 +146,7 @@ Paid for later out of the **first client's $497 setup fee**: upgrading Twilio (~
 **Weeks 3–4: send and sell**
 
 - [ ] 30–60 emails/day plus automatic follow-ups. Reply to every response within an hour. Speed-to-lead applies to you too.
-- [ ] On calls, show the demo video and their own audit findings, then offer the refund guarantee.
+- [ ] On calls, show the demo video and their own audit findings, then offer the free first month (Sales kit, section 0).
 - [ ] Track results: sent → replies → calls → clients. If reply rate is under 3% after 300 sends, change the niche or the offer, not the volume.
 
 **Month 2 and beyond: make it passive**

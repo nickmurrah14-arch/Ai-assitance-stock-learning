@@ -10,6 +10,7 @@
     "callback_time": "within 15 minutes during business hours, first thing next morning after hours unless it's an emergency",
     "booking_link": "",
     "notes": "Free estimates on new system installs. Financing available.",
-    "alert_every_missed_call": true
+    "alert_every_missed_call": true,
+    "avg_job_value": 350
   }
 }

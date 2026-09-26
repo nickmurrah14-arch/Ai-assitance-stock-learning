@@ -62,9 +62,10 @@ class Responder:
         if not biz or caller.strip().lower() in BLOCKED_CALLER_IDS:
             return False
         lead = self.store.lead(business, caller)
-        if lead["opted_out"]:
-            return False
-        if self.store.replies_since(business, caller, time.time() - MISSED_CALL_TEXT_COOLDOWN):
+        texted = not lead["opted_out"] and not self.store.replies_since(
+            business, caller, time.time() - MISSED_CALL_TEXT_COOLDOWN)
+        self.store.log_call(business, caller, texted)
+        if not texted:
             return False
         self._text(business, caller, first_text(biz))
         if biz.get("alert_every_missed_call", True):

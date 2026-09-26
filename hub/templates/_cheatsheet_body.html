@@ -10,7 +10,12 @@
 </style>
 <div class="cs">
 <h1>📋 Call cheat sheet</h1>
-<p class="muted small">Sections: 1 Before you dial · 2 Script · 3 Openers · 4 Questions to ask · 5 Their questions → your answers · 6 Objections · 7 Closing · 8 After the call · 9 Numbers · 10 Don'ts</p>
+<p class="muted small">Sections: 0 The offer · 1 Before you dial · 2 Script · 3 Openers · 4 Questions to ask · 5 Their questions → your answers · 6 Objections · 7 Closing · 8 After the call · 9 Numbers · 10 Don'ts</p>
+
+<h2>0. The offer (say it in one breath)</h2>
+<p class="item"><strong>“{{ pb.offer.one_liner }}”</strong></p>
+<ul>{% for x in pb.offer.points %}<li>{{ x }}</li>{% endfor %}</ul>
+<p class="small"><strong>What you ask in return:</strong> {{ pb.offer.in_return }}<br><strong>Why it's limited:</strong> {{ pb.offer.why_limited }}</p>
 
 <h2>1. Before you dial</h2>
 <ul>{% for x in pb.before_you_dial %}<li>{{ x }}</li>{% endfor %}</ul>

@@ -1,5 +1,17 @@
 {
   "business_name": "Missed Call Rescue",
+  "offer": {
+    "one_liner": "Try it free for 30 days. If it catches you work, keep it for $197 a month. If it doesn't, you owe nothing.",
+    "points": [
+      "Free setup. I cover the setup and the carrier texting registration.",
+      "First 30 days free, starting the day texting goes live, so the carrier wait doesn't eat into it. No card, no contract.",
+      "Around day 25 you get a report: every missed call it caught and every lead it sent you.",
+      "Keep it for $197 a month, locked in for as long as you stay. Cancel anytime with one text.",
+      "Slow-month guarantee: any month it sends you fewer than 2 leads, you don't pay for that month."
+    ],
+    "in_return": "20 minutes to set it up, one call-forwarding setting on your phone, 10 minutes at the end to look at the results together, and an honest review if you like it.",
+    "why_limited": "It's a founding offer for my first 5 businesses in the area, because I set each one up personally."
+  },
   "before_you_dial": [
     "Open the business's page in the call assistant: read what we noticed and the notes.",
     "Know your one number: most callers who hit voicemail don't leave one; they call the next company.",
@@ -80,8 +92,8 @@
       "why": "Surfaces objections early."
     },
     {
-      "q": "If this caught just two extra jobs a month, would that be worth $197?",
-      "why": "A soft trial close."
+      "q": "If this caught two extra jobs a month, would that be worth $197? ... And you'd see that in the free month before paying anything.",
+      "why": "A soft trial close that sets up the free month."
     }
   ],
   "faq": [
@@ -119,14 +131,30 @@
       "items": [
         {
           "q": "How much is it?",
-          "a": "$497 one-time setup, then $197 a month. Texting and the assistant are included. No contract, cancel anytime."
+          "a": "Nothing to start. Setup is free and the first 30 days are free. After that it's $197 a month if you keep it, no contract, cancel with one text."
         },
         {
-          "q": "Is there a guarantee?",
-          "a": "Yes. If it doesn't recover at least one lead in your first 30 days, I refund the setup fee."
+          "q": "What's the catch?",
+          "a": "No catch. I'm new and I need results I can show people. You get a free month; I get a real test and, if it works, an honest review."
         },
         {
-          "q": "Why is it worth it?",
+          "q": "Do I need to give you a card?",
+          "a": "No. Nothing gets charged during the free month. Around day 25 I send you the report, and you decide."
+        },
+        {
+          "q": "What happens after the free month?",
+          "a": "You look at the report. If it caught you work, it's $197 a month and I send you a payment link. If not, I turn it off and your phone goes back to exactly how it was."
+        },
+        {
+          "q": "Is there a guarantee after that?",
+          "a": "Yes. Any month it sends you fewer than 2 leads, you don't pay for that month."
+        },
+        {
+          "q": "What counts as a lead?",
+          "a": "Someone who called, missed you, and texted back about a job. Wrong numbers and spam don't count. You get a text for every one, so you can see them all yourself."
+        },
+        {
+          "q": "Why is it worth $197?",
           "a": "One saved AC repair or water-heater job usually covers the month. A new system install covers the year."
         }
       ]
@@ -136,7 +164,7 @@
       "items": [
         {
           "q": "How long does setup take?",
-          "a": "About an hour of my time and about 20 minutes of yours. Texting goes live once the carriers approve your business-texting registration, usually within a few days to two weeks."
+          "a": "About an hour of my time and about 20 minutes of yours. Texting goes live once the carriers approve your business-texting registration, usually within a few days to two weeks. Your free 30 days start then."
         },
         {
           "q": "What do I need to do?",
@@ -186,7 +214,7 @@
         },
         {
           "q": "Who else uses this?",
-          "a": "Honestly, you'd be one of my first clients. That's why I do a free demo and a money-back guarantee on setup."
+          "a": "Honestly, you'd be one of my first clients. That's why the first month is free: you see real results before you pay anything."
         },
         {
           "q": "What if you disappear?",
@@ -202,7 +230,7 @@
     },
     {
       "they": "It's too expensive.",
-      "you": "What's one AC repair worth to you? If this saves one job a month, it's paid for. And if it doesn't recover a lead in 30 days, the setup is refunded."
+      "you": "It's free for the first month, so you'll see exactly what it catches before you spend a dollar. After that, one saved AC repair a month pays for it, and any month it sends you fewer than 2 leads is free."
     },
     {
       "they": "I don't want a robot talking to my customers.",
@@ -215,6 +243,14 @@
     {
       "they": "I'm too busy right now.",
       "you": "That's exactly when calls get missed! Can I grab 10 minutes on [day] or [day]? Or I can text you a short example if you say that's OK."
+    },
+    {
+      "they": "I don't want another monthly bill.",
+      "you": "Fair. That's why you don't pay anything for the first month. If the report doesn't show it paying for itself, don't keep it. And any month it sends you fewer than 2 leads, you don't pay."
+    },
+    {
+      "they": "What's the catch?",
+      "you": "No catch. I'm new, so I'd rather prove it works than ask you to trust me. All I ask is 20 minutes to set it up and 10 minutes at the end to look at the results."
     },
     {
       "they": "Let me think about it.",
@@ -237,7 +273,9 @@
   "closing": [
     "Book it on the call: 'I have [day] at [time] or [day] at [time]. Which works better?'",
     "Confirm: 'Great, I'll see you [day] at [time] at [place]. Best number to reach you?'",
-    "At the demo: show the example, show their own audit finding, do the ROI math with their numbers, then ask: 'Want me to get you set up this week?'"
+    "At the demo: show the example, show their own audit finding, do the ROI math with their numbers, then: 'Setup's free and the first month's free. Want me to get you started this week?'",
+    "When they say yes: go through the onboarding questions, and ask for their average job value (it goes in their report).",
+    "Around day 25: send the report and text: 'Here's what it caught this month. Want to keep it for $197/month?' Send the payment link when they say yes."
   ],
   "after_call": [
     "Log the result and notes in the call assistant right away.",

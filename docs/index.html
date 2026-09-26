@@ -56,7 +56,7 @@ h2 { font-size: 28px; letter-spacing: -.02em; margin: 0 0 18px; }
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
 .stat { font-size: 36px; font-weight: 800; color: var(--accent); letter-spacing: -.02em; }
 .small { font-size: 13px; color: var(--muted); }
-.price { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 720px; }
+.price { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; max-width: 960px; }
 .price .num { font-size: 40px; font-weight: 800; }
 details { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; margin-bottom: 10px; }
 summary { font-weight: 700; cursor: pointer; }
@@ -124,13 +124,15 @@ footer { padding: 30px 0 50px; color: var(--muted); font-size: 14px; border-top:
 
 <section id="pricing">
   <div class="wrap">
-    <h2>Simple pricing</h2>
+    <h2>Founding offer: try it free for 30 days</h2>
+    <p>For our first 5 businesses in the Deltona area. If it catches you work, keep it. If it doesn't, you owe nothing.</p>
     <div class="price">
-      <div class="card"><div class="small">One-time setup</div><div class="num">$497</div><p>We set up your line and call forwarding, load your services, hours, and service area, and test it with you.</p></div>
-      <div class="card"><div class="small">Monthly</div><div class="num">$197</div><p>Texting, the assistant, monitoring, and changes whenever you need them. No contract. Cancel anytime.</p></div>
+      <div class="card"><div class="small">Setup</div><div class="num">$0</div><p>We set up your line and call forwarding, load your services, hours and service area, handle the carrier texting registration, and test it with you.</p></div>
+      <div class="card"><div class="small">First 30 days</div><div class="num">Free</div><p>Starts the day texting goes live. No card, no contract. Around day 25 you get a report of every call it caught and every lead it sent you.</p></div>
+      <div class="card"><div class="small">After that, if you keep it</div><div class="num">$197/mo</div><p>Locked in for as long as you stay. Texting, the assistant, monitoring, and changes whenever you need them. Cancel anytime.</p></div>
     </div>
-    <p><strong>Guarantee:</strong> if it doesn't recover at least one lead in your first 30 days, your setup fee is refunded.</p>
-    <p class="small">One saved AC repair or water-heater job usually covers the first month.</p>
+    <p><strong>Slow-month guarantee:</strong> any month it sends you fewer than 2 leads, you don't pay for that month.</p>
+    <p class="small">One saved AC repair or water-heater job usually covers the month.</p>
   </div>
 </section>
 

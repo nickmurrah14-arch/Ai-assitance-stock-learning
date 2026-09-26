@@ -65,6 +65,12 @@
   </div>
 
   <div>
+    <div class="card" style="margin-bottom:16px">
+      <h2 style="margin-top:0">🎁 The offer</h2>
+      <div class="say"><strong>{{ pb.offer.one_liner }}</strong></div>
+      <ul class="small">{% for x in pb.offer.points %}<li>{{ x }}</li>{% endfor %}</ul>
+      <p class="small muted">In return: {{ pb.offer.in_return }}</p>
+    </div>
     <div class="card">
       <h2 style="margin-top:0">Quick answers</h2>
       <input class="search" type="text" id="q" placeholder="Type a word: price, contract, robot, setup…">

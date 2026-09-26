@@ -44,8 +44,8 @@ OFFER = os.getenv(
     "OFFER",
     "We set up an assistant that texts back every missed call within seconds, gets the job "
     "details (name, address, problem, timing) by text, and sends you the lead, 24/7, so callers "
-    "don't move on to the next company. Flat setup fee plus a monthly fee; if it doesn't recover "
-    "at least one lead in the first 30 days, the setup fee is refunded.",
+    "don't move on to the next company. Free setup and a free first 30 days, no card; after that "
+    "$197/month only if they keep it, cancel anytime.",
 )
 
 SMTP_HOST = os.getenv("SMTP_HOST", "smtp.zoho.com")
