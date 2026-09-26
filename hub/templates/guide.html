@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block body %}
+<p class="small"><a href="/guides">← All guides</a></p>
+<div class="card guide">{{ html|safe }}</div>
+<p class="small muted">File: {{ path }}</p>
+<style>.guide table { border: 1px solid var(--line); } .guide code { background: var(--chip); padding: 1px 5px; border-radius: 5px; } .guide pre { background: var(--chip); padding: 10px; border-radius: 8px; overflow-x: auto; }</style>
+{% endblock %}

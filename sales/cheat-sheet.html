@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Call Cheat Sheet</title>
+<style>
+:root {
+  --bg: #f5f6f8; --surface: #fff; --text: #17202b; --muted: #5d6877; --line: #e2e6eb;
+  --brand: #0b6bcb; --brand-ink: #fff; --good: #1a7f4b; --good-bg: #e7f6ee; --warn: #9a5b00; --warn-bg: #fff4e0;
+  --bad: #b42318; --bad-bg: #fdecea; --chip: #eef1f5;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f141a; --surface: #161d25; --text: #e6ecf2; --muted: #9aa6b3; --line: #27313c;
+    --brand: #4c9ff0; --brand-ink: #0b1220; --good: #5fd39a; --good-bg: #13291f; --warn: #f0b35a; --warn-bg: #2b2112;
+    --bad: #ff8a80; --bad-bg: #2c1716; --chip: #222b36;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+a { color: var(--brand); }
+nav { background: var(--surface); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 5; }
+nav .in { max-width: 1180px; margin: 0 auto; padding: 10px 16px; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+nav .brand { font-weight: 800; margin-right: 12px; }
+nav a.tab { text-decoration: none; color: var(--text); padding: 7px 12px; border-radius: 8px; font-weight: 600; font-size: 15px; }
+nav a.tab.on, nav a.tab:hover { background: var(--chip); }
+main { max-width: 1180px; margin: 0 auto; padding: 20px 16px 60px; }
+h1 { font-size: 26px; margin: 4px 0 16px; letter-spacing: -.02em; }
+h2 { font-size: 19px; margin: 22px 0 10px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+.grid { display: grid; gap: 14px; }
+.g4 { grid-template-columns: repeat(4, 1fr); } .g3 { grid-template-columns: repeat(3, 1fr); } .g2 { grid-template-columns: 1fr 1fr; }
+@media (max-width: 860px) { .g4, .g3, .g2 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .g4, .g3, .g2 { grid-template-columns: 1fr; } }
+.stat { font-size: 32px; font-weight: 800; letter-spacing: -.02em; }
+.muted { color: var(--muted); } .small { font-size: 14px; }
+.btn { display: inline-block; border: 0; background: var(--brand); color: var(--brand-ink); padding: 9px 14px; border-radius: 9px; font: inherit; font-weight: 700; text-decoration: none; cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--brand); border: 1.5px solid var(--brand); }
+.btn.small { padding: 5px 10px; font-size: 14px; }
+table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+tr:last-child td { border-bottom: 0; }
+.pill { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 13px; font-weight: 600; background: var(--chip); }
+.pill.good { background: var(--good-bg); color: var(--good); } .pill.warn { background: var(--warn-bg); color: var(--warn); } .pill.bad { background: var(--bad-bg); color: var(--bad); }
+.filters { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.filters a { text-decoration: none; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--text); font-size: 14px; background: var(--surface); }
+.filters a.on { background: var(--brand); color: var(--brand-ink); border-color: var(--brand); }
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin-bottom: 8px; }
+summary { font-weight: 700; cursor: pointer; }
+.say { font-size: 17px; }
+.tip { font-size: 14px; color: var(--warn); margin-top: 4px; }
+textarea, input[type=date], input[type=text] { width: 100%; font: inherit; padding: 9px 10px; border-radius: 9px; border: 1px solid var(--line); background: var(--bg); color: var(--text); }
+.table-wrap { overflow-x: auto; }
+@media print { nav, .noprint { display: none !important; } body { background: #fff; color: #000; } .card, details { border-color: #ccc; } }
+</style>
+</head><body><main>
+<p class="noprint"><button class="btn small" onclick="window.print()">🖨️ Print / save as PDF</button></p>
+<style>
+.cs h2 { border-bottom: 2px solid var(--brand); padding-bottom: 4px; }
+.cs .cols { columns: 2 360px; column-gap: 22px; }
+.cs .item { break-inside: avoid; margin: 0 0 10px; }
+.cs .q { font-weight: 700; }
+.cs .a { margin-top: 2px; }
+.cs ul, .cs ol { margin-top: 4px; padding-left: 20px; }
+.cs .num { font-weight: 800; color: var(--brand); }
+@media print { .cs h2 { break-after: avoid; } .cs .cols { columns: 2; } body { font-size: 12px; } }
+</style>
+<div class="cs">
+<h1>📋 Call cheat sheet</h1>
+<p class="muted small">Sections: 0 The offer · 1 Before you dial · 2 Script · 3 Openers · 4 Questions to ask · 5 Their questions → your answers · 6 Objections · 7 Closing · 8 After the call · 9 Numbers · 10 Don'ts</p>
+
+<h2>0. The offer (say it in one breath)</h2>
+<p class="item"><strong>“Try it free for 30 days. If it catches you work, keep it for $197 a month. If it doesn&#39;t, you owe nothing.”</strong></p>
+<ul><li>Free setup. I cover the setup and the carrier texting registration.</li><li>First 30 days free, starting the day texting goes live, so the carrier wait doesn&#39;t eat into it. No card, no contract.</li><li>Around day 25 you get a report: every missed call it caught and every lead it sent you.</li><li>Keep it for $197 a month, locked in for as long as you stay. Cancel anytime with one text.</li><li>Slow-month guarantee: any month it sends you fewer than 2 leads, you don&#39;t pay for that month.</li></ul>
+<p class="small"><strong>What you ask in return:</strong> 20 minutes to set it up, one call-forwarding setting on your phone, 10 minutes at the end to look at the results together, and an honest review if you like it.<br><strong>Why it's limited:</strong> It&#39;s a founding offer for my first 5 businesses in the area, because I set each one up personally.</p>
+
+<h2>1. Before you dial</h2>
+<ul><li>Open the business&#39;s page in the call assistant: read what we noticed and the notes.</li><li>Know your one number: most callers who hit voicemail don&#39;t leave one; they call the next company.</li><li>Have your calendar open so you can book the demo on the call.</li><li>Best times: 7-8am, 11:30am-1pm, 4:30-6pm. Avoid Monday mornings and hot summer afternoons.</li><li>Smile when you talk. It sounds friendlier over the phone.</li></ul>
+
+<h2>2. The 5-step script</h2>
+<ol><li class="item"><span class="q">Opener:</span> “Hi, is this the owner? ... Great. I&#39;m [your name], I&#39;m local here in Deltona. I&#39;ll be quick: do you ever miss calls while you&#39;re out on jobs?”</li><li class="item"><span class="q">Let them talk:</span> “What usually happens to those? Do they go to voicemail?”<div class="small muted">💡 Stay quiet and let them explain. They&#39;re describing the problem you solve.</div></li><li class="item"><span class="q">Bridge:</span> “Most people who hit voicemail don&#39;t leave a message. They call the next company. What I do is make sure every missed call gets a text back within seconds. It gets their name, address and what&#39;s wrong, and texts you the lead, even at 11pm.”</li><li class="item"><span class="q">Ask for the demo:</span> “Can I show you in 10 minutes? I can stop by, or we can do a quick video call. Is [day] or [day] easier?”</li><li class="item"><span class="q">If busy:</span> “Totally get it. Can I text you a 30-second example so you can look when you have a minute?”<div class="small muted">💡 Only text them if they say yes. That&#39;s their consent.</div></li></ol>
+
+<h2>3. Openers by situation</h2>
+<div class="cols"><div class="item"><div class="q">Owner answers</div><div class="a">“Hi, is this [owner name]? I&#39;m [your name], local here in Deltona. Quick question: do you ever miss calls while you&#39;re out on jobs?”</div></div><div class="item"><div class="q">Receptionist / office answers</div><div class="a">“Hi, I&#39;m [your name], I&#39;m local and I help HVAC and plumbing companies catch the calls that come in when the office is closed or the lines are busy. Who handles decisions on the phones? ... When&#39;s the best time to reach them?”</div></div><div class="item"><div class="q">Voicemail</div><div class="a">“Hi, this is [your name], I&#39;m local in Deltona. I help HVAC and plumbing companies turn missed calls into booked jobs with an instant text-back. I&#39;d love to show you a quick 10-minute demo. My number is [your number]. Again, [your name], [your number]. Thanks!”</div><div class="small muted">💡 Keep it under 30 seconds. Say your number twice.</div></div><div class="item"><div class="q">They say &#39;who is this?&#39; / &#39;what are you selling?&#39;</div><div class="a">“Fair question! I&#39;m [your name], I live here in Deltona. I set up a system that texts back anyone whose call you miss, so they don&#39;t call your competitor. I&#39;m not asking you to buy anything today, just to see a 10-minute demo.”</div></div></div>
+
+<h2>4. Questions to ask them (in this order)</h2>
+<ol><li class="item"><span class="q">Roughly how many calls do you get in a week?</span> <span class="small muted">Sizes the opportunity.</span></li><li class="item"><span class="q">When you&#39;re on a job, who answers the phone?</span> <span class="small muted">Finds the gap. It&#39;s usually nobody.</span></li><li class="item"><span class="q">What happens to calls after 5pm and on weekends?</span> <span class="small muted">After-hours calls are the easiest win.</span></li><li class="item"><span class="q">Do people leave voicemails, or do most just hang up?</span> <span class="small muted">Lets them say the problem out loud.</span></li><li class="item"><span class="q">What&#39;s a typical repair ticket worth? And a new system?</span> <span class="small muted">Lets you do the ROI math with their own numbers.</span></li><li class="item"><span class="q">How do you get most of your customers now: Google, referrals, ads?</span> <span class="small muted">If they pay for ads, every missed call wastes ad money.</span></li><li class="item"><span class="q">Have you tried an answering service before? How did it go?</span> <span class="small muted">Surfaces objections early.</span></li><li class="item"><span class="q">If this caught two extra jobs a month, would that be worth $197? ... And you&#39;d see that in the free month before paying anything.</span> <span class="small muted">A soft trial close that sets up the free month.</span></li></ol>
+
+<h2>5. Their questions → your answers</h2>
+
+<h3 style="margin:14px 0 6px">How it works</h3>
+<div class="cols"><div class="item"><div class="q">How does it work?</div><div class="a">When a call isn&#39;t answered, your phone forwards it to your assistant line. The caller gets a text within seconds, the assistant gets their name, address, the problem and when they&#39;re free, and you get the lead by text.</div></div><div class="item"><div class="q">Do I have to change my phone number?</div><div class="a">No. We turn on &#39;forward when unanswered&#39; on your current line. Calls you pick up work exactly like today.</div></div><div class="item"><div class="q">Does it answer the phone or talk to people?</div><div class="a">No, it texts. It&#39;s a text conversation after a missed call, not a robot voice.</div></div><div class="item"><div class="q">Can it book appointments on my calendar?</div><div class="a">It collects when the customer is available, and can send your booking link if you have one. You or your office confirm the time on the call-back.</div></div><div class="item"><div class="q">What if I answer the call?</div><div class="a">Nothing changes. It only kicks in when a call goes unanswered.</div></div><div class="item"><div class="q">Can it reply in Spanish?</div><div class="a">It can be set up to reply in Spanish when a customer writes in Spanish. We&#39;d test that together before going live.</div></div></div>
+
+<h3 style="margin:14px 0 6px">Cost</h3>
+<div class="cols"><div class="item"><div class="q">How much is it?</div><div class="a">Nothing to start. Setup is free and the first 30 days are free. After that it&#39;s $197 a month if you keep it, no contract, cancel with one text.</div></div><div class="item"><div class="q">What&#39;s the catch?</div><div class="a">No catch. I&#39;m new and I need results I can show people. You get a free month; I get a real test and, if it works, an honest review.</div></div><div class="item"><div class="q">Do I need to give you a card?</div><div class="a">No. Nothing gets charged during the free month. Around day 25 I send you the report, and you decide.</div></div><div class="item"><div class="q">What happens after the free month?</div><div class="a">You look at the report. If it caught you work, it&#39;s $197 a month and I send you a payment link. If not, I turn it off and your phone goes back to exactly how it was.</div></div><div class="item"><div class="q">Is there a guarantee after that?</div><div class="a">Yes. Any month it sends you fewer than 2 leads, you don&#39;t pay for that month.</div></div><div class="item"><div class="q">What counts as a lead?</div><div class="a">Someone who called, missed you, and texted back about a job. Wrong numbers and spam don&#39;t count. You get a text for every one, so you can see them all yourself.</div></div><div class="item"><div class="q">Why is it worth $197?</div><div class="a">One saved AC repair or water-heater job usually covers the month. A new system install covers the year.</div></div></div>
+
+<h3 style="margin:14px 0 6px">Setup</h3>
+<div class="cols"><div class="item"><div class="q">How long does setup take?</div><div class="a">About an hour of my time and about 20 minutes of yours. Texting goes live once the carriers approve your business-texting registration, usually within a few days to two weeks. Your free 30 days start then.</div></div><div class="item"><div class="q">What do I need to do?</div><div class="a">Answer a few questions about your services, hours and area, and turn on one call-forwarding setting on your phone. I handle the rest.</div></div><div class="item"><div class="q">Will it work with my phone company?</div><div class="a">Almost every carrier and business phone system supports &#39;forward when unanswered&#39;. I&#39;ll check yours before we start.</div></div></div>
+
+<h3 style="margin:14px 0 6px">Customers &amp; safety</h3>
+<div class="cols"><div class="item"><div class="q">Will it say something wrong to my customers?</div><div class="a">It only uses the facts you approve. It never quotes prices or promises arrival times; it tells customers your team will confirm those.</div></div><div class="item"><div class="q">What about emergencies?</div><div class="a">Gas smell, carbon monoxide, sparking or smoke: it tells them to get out and call 911 or the gas company, and texts you an URGENT alert. Flooding and no AC for someone at risk get flagged urgent too.</div></div><div class="item"><div class="q">Does it pretend to be a person?</div><div class="a">No. It says it&#39;s your automated assistant.</div></div><div class="item"><div class="q">What if a customer doesn&#39;t want texts?</div><div class="a">They reply STOP and it stops immediately.</div></div><div class="item"><div class="q">Is this legal?</div><div class="a">Yes. It only texts people who just called you, includes an opt-out, and your business gets registered with the carriers for texting.</div></div><div class="item"><div class="q">Can I see the conversations?</div><div class="a">You get a text summary of every lead, and I can send you the full conversation for any of them.</div></div></div>
+
+<h3 style="margin:14px 0 6px">About you</h3>
+<div class="cols"><div class="item"><div class="q">Who are you?</div><div class="a">I&#39;m [your name], I live here in Deltona. I build these systems myself, so if something needs changing I can do it quickly.</div></div><div class="item"><div class="q">Who else uses this?</div><div class="a">Honestly, you&#39;d be one of my first clients. That&#39;s why the first month is free: you see real results before you pay anything.</div></div><div class="item"><div class="q">What if you disappear?</div><div class="a">You can cancel anytime with no contract, and your phone number never changes, so turning it off is just switching off call forwarding.</div></div></div>
+
+
+<h2>6. Objections</h2>
+<div class="cols"><div class="item"><div class="q">“We answer all our calls.”</div><div class="a">That&#39;s great, most don&#39;t. What about after 6pm, weekends, or when a second call comes in while you&#39;re on the first? This only kicks in when a call isn&#39;t picked up, so it costs you nothing when you do answer.</div></div><div class="item"><div class="q">“It&#39;s too expensive.”</div><div class="a">It&#39;s free for the first month, so you&#39;ll see exactly what it catches before you spend a dollar. After that, one saved AC repair a month pays for it, and any month it sends you fewer than 2 leads is free.</div></div><div class="item"><div class="q">“I don&#39;t want a robot talking to my customers.”</div><div class="a">Fair. It doesn&#39;t pretend to be a person and doesn&#39;t quote prices. It just says &#39;sorry we missed you,&#39; gets the details, and hands them to you. You still make the call.</div></div><div class="item"><div class="q">“We already have an answering service.”</div><div class="a">How much do you pay for it? This is usually cheaper, replies in seconds by text, which a lot of people prefer, and you get the details in writing.</div></div><div class="item"><div class="q">“I&#39;m too busy right now.”</div><div class="a">That&#39;s exactly when calls get missed! Can I grab 10 minutes on [day] or [day]? Or I can text you a short example if you say that&#39;s OK.</div></div><div class="item"><div class="q">“I don&#39;t want another monthly bill.”</div><div class="a">Fair. That&#39;s why you don&#39;t pay anything for the first month. If the report doesn&#39;t show it paying for itself, don&#39;t keep it. And any month it sends you fewer than 2 leads, you don&#39;t pay.</div></div><div class="item"><div class="q">“What&#39;s the catch?”</div><div class="a">No catch. I&#39;m new, so I&#39;d rather prove it works than ask you to trust me. All I ask is 20 minutes to set it up and 10 minutes at the end to look at the results.</div></div><div class="item"><div class="q">“Let me think about it.”</div><div class="a">Of course. What&#39;s the part you&#39;re unsure about? ... Can I follow up [day]?</div></div><div class="item"><div class="q">“Send me an email.”</div><div class="a">Happy to. What&#39;s the best address? I&#39;ll include a short video of it working.</div></div><div class="item"><div class="q">“We&#39;re not interested.”</div><div class="a">No problem at all, thanks for your time. If missed calls ever become a headache, I&#39;m right here in Deltona.</div><div class="small muted">💡 Log it as &#39;Not interested&#39; and don&#39;t call again.</div></div><div class="item"><div class="q">“How did you get my number?”</div><div class="a">It&#39;s the number your business lists publicly online. I&#39;m reaching out because I&#39;m local and think this could help.</div></div></div>
+
+<h2>7. Closing</h2>
+<ul><li>Book it on the call: &#39;I have [day] at [time] or [day] at [time]. Which works better?&#39;</li><li>Confirm: &#39;Great, I&#39;ll see you [day] at [time] at [place]. Best number to reach you?&#39;</li><li>At the demo: show the example, show their own audit finding, do the ROI math with their numbers, then: &#39;Setup&#39;s free and the first month&#39;s free. Want me to get you started this week?&#39;</li><li>When they say yes: go through the onboarding questions, and ask for their average job value (it goes in their report).</li><li>Around day 25: send the report and text: &#39;Here&#39;s what it caught this month. Want to keep it for $197/month?&#39; Send the payment link when they say yes.</li></ul>
+
+<h2>8. After the call</h2>
+<ul><li>Log the result and notes in the call assistant right away.</li><li>Set a follow-up date for &#39;Call back&#39; and &#39;Interested&#39;.</li><li>Only text or email them if they said you could.</li><li>If they said not interested or don&#39;t call, mark it and never contact them again.</li></ul>
+
+<h2>9. Numbers you can quote</h2>
+<ul><li><span class="num">62%</span> of calls to small businesses go unanswered (industry call-tracking data)</li><li><span class="num">85%</span> of people whose call isn&#39;t answered don&#39;t call back</li><li><span class="num">9x</span> more likely to become a job when the lead hears back within 5 minutes vs 30</li><li><span class="num">30-40%</span> of home-services calls come in after hours</li></ul>
+
+<h2>10. Don'ts</h2>
+<ul><li>Don&#39;t promise prices or arrival times for their customers.</li><li>Don&#39;t cold-text or use an automated or AI voice to call prospects. It&#39;s illegal without consent, with fines of $500-1,500 per message.</li><li>Don&#39;t record calls without telling them. Florida requires everyone on the call to agree.</li><li>Don&#39;t claim other clients or results you don&#39;t have yet.</li><li>Don&#39;t argue. If it&#39;s a no, thank them and move on.</li></ul>
+</div>
+</main></body></html>

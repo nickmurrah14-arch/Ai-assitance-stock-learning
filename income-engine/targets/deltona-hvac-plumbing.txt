@@ -1,0 +1,50 @@
+# HVAC + plumbing around Deltona, FL (Volusia + Seminole counties). One Google search per line.
+# Closest cities first. Run a few at a time: python find_leads.py --file targets/deltona-hvac-plumbing.txt
+HVAC company in Deltona, FL
+AC repair in Deltona, FL
+plumber in Deltona, FL
+HVAC company in DeLand, FL
+AC repair in DeLand, FL
+plumber in DeLand, FL
+HVAC company in Orange City, FL
+AC repair in Orange City, FL
+plumber in Orange City, FL
+HVAC company in DeBary, FL
+AC repair in DeBary, FL
+plumber in DeBary, FL
+HVAC company in Sanford, FL
+AC repair in Sanford, FL
+plumber in Sanford, FL
+HVAC company in Lake Mary, FL
+AC repair in Lake Mary, FL
+plumber in Lake Mary, FL
+HVAC company in Daytona Beach, FL
+AC repair in Daytona Beach, FL
+plumber in Daytona Beach, FL
+HVAC company in Port Orange, FL
+AC repair in Port Orange, FL
+plumber in Port Orange, FL
+HVAC company in Ormond Beach, FL
+AC repair in Ormond Beach, FL
+plumber in Ormond Beach, FL
+HVAC company in New Smyrna Beach, FL
+AC repair in New Smyrna Beach, FL
+plumber in New Smyrna Beach, FL
+HVAC company in Edgewater, FL
+AC repair in Edgewater, FL
+plumber in Edgewater, FL
+HVAC company in Oviedo, FL
+AC repair in Oviedo, FL
+plumber in Oviedo, FL
+HVAC company in Winter Springs, FL
+AC repair in Winter Springs, FL
+plumber in Winter Springs, FL
+HVAC company in Longwood, FL
+AC repair in Longwood, FL
+plumber in Longwood, FL
+HVAC company in Altamonte Springs, FL
+AC repair in Altamonte Springs, FL
+plumber in Altamonte Springs, FL
+HVAC company in Casselberry, FL
+AC repair in Casselberry, FL
+plumber in Casselberry, FL

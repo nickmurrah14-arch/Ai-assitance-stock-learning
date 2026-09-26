@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+<h1>Good to see you. Here's where things stand.</h1>
+<div class="grid g4">
+  <a class="card" href="/calls?view=to_call" style="text-decoration:none;color:inherit"><div class="muted small">To call</div><div class="stat">{{ counts.to_call }}</div><div class="small muted">of {{ total }} on the call sheet</div></a>
+  <a class="card" href="/calls?view=due" style="text-decoration:none;color:inherit"><div class="muted small">Follow-ups due</div><div class="stat">{{ counts.due }}</div><div class="small muted">today or overdue</div></a>
+  <a class="card" href="/calls?view=interested" style="text-decoration:none;color:inherit"><div class="muted small">Interested / demo booked</div><div class="stat">{{ counts.interested }}</div><div class="small muted">🎯 your pipeline</div></a>
+  <a class="card" href="/drafts" style="text-decoration:none;color:inherit"><div class="muted small">Email drafts</div><div class="stat">{{ draft_counts.draft }}</div><div class="small muted">{{ draft_counts.approved }} approved · {{ draft_counts.sent }} sent</div></a>
+</div>
+
+<h2>What to do next</h2>
+<div class="grid g3">
+  <div class="card"><strong>1. Make calls</strong><p class="small">Start with the top of the list. Each business has a page with what we noticed, your script, and quick answers.</p><a class="btn" href="/calls">Start calling →</a></div>
+  <div class="card"><strong>2. Keep the cheat sheet open</strong><p class="small">Every question an owner might ask, with an answer, plus objections. Print it or keep it in a tab.</p><a class="btn ghost" href="/cheatsheet">Open cheat sheet</a></div>
+  <div class="card"><strong>3. Review email drafts</strong><p class="small">Read each one and approve the ones you like. Nothing sends until your email domain is set up.</p><a class="btn ghost" href="/drafts">Review drafts</a></div>
+</div>
+
+{% if due %}
+<h2>Follow-ups due</h2>
+<div class="table-wrap"><table>
+<tr><th>Business</th><th>Phone</th><th>Last result</th><th>Due</th></tr>
+{% for r in due %}<tr><td><a href="/call/{{ key_of(r) }}">{{ r.name }}</a></td><td><a href="tel:{{ r.phone }}">{{ r.phone }}</a></td><td>{{ r.result }}</td><td>{{ r.follow_up_date }}</td></tr>{% endfor %}
+</table></div>
+{% endif %}
+
+<p class="small muted" style="margin-top:28px">Lead database: {{ leads_total }} licensed AC & plumbing businesses in Volusia + Seminole. Your data stays on this computer.</p>
+{% endblock %}

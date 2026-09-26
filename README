@@ -23,3 +23,20 @@ cd Ai-assitance-stock-learning
 
 ## 🤝 Contributing
 Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com) if you want to help out.
+
+## 💸 Income Engine
+
+See [`income-engine/`](income-engine/) for an automated lead-finding and outreach pipeline, plus a research-backed playbook ([PLAYBOOK.md](income-engine/PLAYBOOK.md)) on the fastest realistic ways to earn with AI.
+
+## 📞 Lead Responder
+
+See [`lead-responder/`](lead-responder/) for the product: missed-call text-back plus AI texting for HVAC and plumbing businesses (Twilio + Claude).
+
+## 🌐 Website & sales kit
+
+- [`docs/index.html`](docs/index.html): the sales website (publish free with GitHub Pages → Settings → Pages → Deploy from branch → `/docs`).
+- [`sales/SALES-KIT.md`](sales/SALES-KIT.md): pitch, call script, objections, onboarding questions, and Fiverr/Upwork copy.
+
+## 🏠 Business HQ
+
+Start with [`START-HERE.md`](START-HERE.md). [`hub/`](hub/) is a local dashboard (calls, call assistant, email drafts, cheat sheet, guides): `python hub/app.py --open`.

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Email drafts{% endblock %}
+{% block body %}
+<h1>✉️ Email drafts</h1>
+<p class="small muted">Read each email and approve the ones you like. Approving doesn't send anything; emails only go out when you run the sender after your email domain is set up. <code>{signature}</code> becomes your name, mailing address and the opt-out line.</p>
+<div class="filters">
+  {% for v, label in [("draft","To review"),("approved","Approved"),("skip","Skipped"),("sent","Sent"),("all","All")] %}
+  <a class="{{ 'on' if status == v }}" href="/drafts?status={{ v }}">{{ label }}</a>
+  {% endfor %}
+</div>
+{% if not rows %}<div class="card">Nothing here.</div>{% endif %}
+{% for d in rows %}
+<div class="card" style="margin-bottom:14px">
+  <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+    <div><strong>{{ d.name }}</strong> <span class="muted small">→ {{ d.email }}</span></div>
+    <span class="pill {{ 'good' if d.status == 'approved' else 'bad' if d.status == 'skip' else '' }}">{{ d.status }}</span>
+  </div>
+  <div class="muted small" style="margin-top:6px">Subject: <strong>{{ d.subject }}</strong></div>
+  <div style="white-space:pre-wrap;margin-top:8px">{{ d.body.replace('{signature}', '[your name, mailing address, opt-out line]') }}</div>
+  {% if d.status in ('draft', 'approved', 'skip') %}
+  <form method="post" action="/drafts/{{ d.place_id }}/status" style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap" class="noprint">
+    <input type="hidden" name="back" value="{{ status }}">
+    {% if d.status != 'approved' %}<button class="btn small" name="status" value="approved">✓ Approve</button>{% endif %}
+    {% if d.status != 'draft' %}<button class="btn small ghost" name="status" value="draft">Back to review</button>{% endif %}
+    {% if d.status != 'skip' %}<button class="btn small ghost" name="status" value="skip">Skip this one</button>{% endif %}
+  </form>
+  <p class="small muted">To edit the wording, open <code>income-engine\data\drafts.csv</code> in Excel or Notepad, or ask Claude to change it.</p>
+  {% endif %}
+</div>
+{% endfor %}
+{% endblock %}
